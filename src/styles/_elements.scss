@@ -1,0 +1,7 @@
+@import './dimensions.scss';
+
+$elements-semantic: html, body, main, section, nav, header, footer, section, article, aside;
+
+#{$elements-semantic} {
+  @include s-default;
+}
