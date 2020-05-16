@@ -4,7 +4,7 @@ image:
   pullPolicy: IfNotPresent
   tag: ""
   digest: ""
-env: {}
+env: []
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
