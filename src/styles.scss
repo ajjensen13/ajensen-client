@@ -1,5 +1,7 @@
-@import 'styles/_colors.scss';
-@import 'styles/_dimensions.scss';
-@import 'styles/_elements.scss';
-@import 'styles/layout.scss';
-@import 'styles/theme.scss';
+@forward 'scss/variables';
+@forward 'scss/directions';
+@forward 'scss/dimensions';
+@forward 'scss/elements';
+@forward 'scss/layout';
+@forward 'scss/theme';
+@forward 'scss/layers';

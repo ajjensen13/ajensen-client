@@ -1,0 +1,115 @@
+@use 'variables' as v;
+@use 'directions' as d;
+
+@function size($name) {
+  @return map_get(v.$size-factors, $name) * v.$size-root;
+}
+
+@each $s in v.$sizes {
+  @each $d in d.cardinal() {
+    %p#{d.abbreviation($d)}-#{$s} {
+      padding-#{$d}: size($s);
+    }
+    %m#{d.abbreviation($d)}-#{$s} {
+      margin-#{$d}: size($s);
+    }
+    %s#{d.abbreviation($d)}-#{$s} {
+      @extend %p#{d.abbreviation($d)}-#{$s};
+      @extend %m#{d.abbreviation($d)}-#{$s};
+    }
+  }
+  @each $c in d.cardinal_combinations() {
+    @each $d in d.combination_to_directions($c) {
+      %p#{d.abbreviation($c)}-#{$s} {
+        @extend %p#{d.abbreviation($d)}-#{$s};
+      }
+      %m#{d.abbreviation($c)}-#{$s} {
+        @extend %m#{d.abbreviation($d)}-#{$s};
+      }
+      %s#{d.abbreviation($c)}-#{$s} {
+        @extend %p#{d.abbreviation($d)}-#{$s};
+        @extend %m#{d.abbreviation($d)}-#{$s};
+      }
+    }
+  }
+  %p-#{$s} {
+    padding: size($s);
+  }
+  %m-#{$s} {
+    margin: size($s);
+  }
+  %s-#{$s} {
+    @extend %p-#{$s};
+    @extend %m-#{$s};
+  }
+}
+
+%pos-static {
+  position: static;
+}
+
+%pos-fixed {
+  position: fixed;
+}
+
+%pos-absolute {
+  position: absolute;
+}
+
+%pos-relative {
+  position: relative;
+}
+
+%pos-sticky {
+  position: sticky;
+}
+
+%dis-block {
+  display: block;
+}
+
+%dis-inline {
+  display: inline;
+}
+
+%dis-flex {
+  display: flex;
+}
+
+%width-viewport {
+  width: 100vw;
+}
+
+%height-viewport {
+  height: 100vh;
+}
+
+%dim-viewport {
+  @extend %width-viewport;
+  @extend %height-viewport;
+}
+
+%width-parent {
+  width: 100%;
+}
+
+%height-parent {
+  height: 100%;
+}
+
+%dim-parent {
+  @extend %width-parent;
+  @extend %height-parent;
+}
+
+%shadow-x {
+  box-shadow: v.$shadow-x 0 v.$shadow-blur v.$shadow-color;
+}
+
+%shadow-y {
+  box-shadow: 0 v.$shadow-y v.$shadow-blur v.$shadow-color;
+}
+
+%shadow {
+  box-shadow: v.$shadow-x v.$shadow-y v.$shadow-blur v.$shadow-color;
+}

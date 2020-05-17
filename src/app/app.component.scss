@@ -1,0 +1,6 @@
+@use '../styles';
+
+:host {
+  display: block;
+  @extend %dim-viewport;
+}

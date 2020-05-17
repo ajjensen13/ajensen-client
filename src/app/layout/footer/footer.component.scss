@@ -1,0 +1,13 @@
+@use '../../../styles';
+
+$footer-min-height: 50px;
+
+:host {
+  display: block;
+  background-color: darken(styles.$color-background-default, 5%);
+  min-height: $footer-min-height;
+}
+
+footer {
+  @extend %p-default;
+}

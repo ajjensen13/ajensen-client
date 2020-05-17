@@ -1,0 +1,34 @@
+@use '../../styles';
+
+:host {
+  @extend %dim-viewport;
+
+  display: flex;
+  flex-direction: column;
+
+  aj-header {
+    @extend %inflexible;
+    @extend %pos-relative;
+    @extend %shadow-y;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: max-content;
+  }
+
+  main {
+    @extend %flexible;
+    @extend %dim-parent;
+    @extend %layer-content;
+    @extend %p-default;
+  }
+
+  aj-footer {
+    @extend %inflexible;
+    @extend %pos-relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: max-content;
+  }
+}

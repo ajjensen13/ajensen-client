@@ -1,0 +1,21 @@
+// colors
+$color-foreground-accent: #ed8733;
+$color-foreground-default: #476040;
+$color-foreground-muted: #789174;
+$color-background-default: #efeeea;
+$color-background-accent: #d2dac3;
+$color-shadow: #65808080;
+//$color-error: #b55139;
+
+// Dimensions
+$size-root: 16px;
+$size-spacer: 4px;
+$sizes: none tight default cozy;
+$size-factors: (none: 0, tight: 0.5, default: 1, cozy: 1.5);
+
+// Shadows
+$shadow-x: $size-spacer;
+$shadow-y: $size-spacer;
+$shadow-blur: $size-spacer / 2;
+$shadow-color: $color-shadow;
+$shadow: $shadow-x $shadow-y $shadow-blur $shadow-color;

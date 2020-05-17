@@ -1,0 +1,6 @@
+@use 'dimensions' as d;
+
+* {
+  box-sizing: border-box;
+  @extend %s-none;
+}

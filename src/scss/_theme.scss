@@ -1,0 +1,15 @@
+@use 'variables';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;1,100;1,400&display=swap');
+
+:root {
+  font-size: variables.$size-root;
+}
+
+body {
+  color: variables.$color-foreground-default;
+  background-color: variables.$color-background-default;
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+}

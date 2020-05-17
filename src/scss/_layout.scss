@@ -1,0 +1,31 @@
+@use 'dimensions';
+@import 'reset';
+
+html, body {
+  @extend %dim-viewport;
+}
+
+%flex {
+  @extend %dis-flex;
+  flex-direction: column;
+}
+
+%flex-h {
+  @extend %flex;
+  flex-direction: column;
+}
+
+%flex-v {
+  @extend %flex;
+  flex-direction: row;
+}
+
+%flexible {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+%inflexible {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
