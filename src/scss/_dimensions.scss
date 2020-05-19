@@ -74,6 +74,10 @@
 
 %dis-flex {
   display: flex;
+
+  > * {
+    @extend %dis-block;
+  }
 }
 
 %width-viewport {

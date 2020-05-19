@@ -1,0 +1,16 @@
+@use '../../../styles';
+
+$width: 20px;
+
+:host {
+  @extend %p-default;
+}
+
+.route-circle {
+  width: $width;
+  height: max-content;
+
+  * {
+    stroke: styles.$color-foreground-muted;
+  }
+}

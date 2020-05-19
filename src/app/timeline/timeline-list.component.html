@@ -1,0 +1,7 @@
+<ol>
+  <ng-container *ngFor="let li of listItems">
+    <li>
+      <ng-container [ngTemplateOutlet]="li.templateRef"></ng-container>
+    </li>
+  </ng-container>
+</ol>

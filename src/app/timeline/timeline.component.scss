@@ -1,4 +1,14 @@
 @use '../../styles';
 
 :host {
+  display: grid;
+  grid-template-columns: max-content max-content;
+}
+
+aj-timeline-route {
+  @extend %inflexible;
+}
+
+aj-timeline-event {
+  @extend %flexible;
 }

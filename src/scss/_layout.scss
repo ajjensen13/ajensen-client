@@ -7,7 +7,6 @@ html, body {
 
 %flex {
   @extend %dis-flex;
-  flex-direction: column;
 }
 
 %flex-h {

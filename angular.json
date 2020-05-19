@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ajensen-client",
+            "outputPath": "dist/ajensen-client/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -122,6 +122,41 @@
           "configurations": {
             "production": {
               "devServerTarget": "ajensen-client:serve:production"
+            }
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/ajensen-client/server",
+            "main": "src/main.server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "app-shell": {
+          "builder": "@angular-devkit/build-angular:app-shell",
+          "options": {
+            "browserTarget": "ajensen-client:build",
+            "serverTarget": "ajensen-client:server",
+            "route": "shell"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ajensen-client:build:production",
+              "serverTarget": "ajensen-client:server:production"
             }
           }
         }
