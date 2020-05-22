@@ -3,32 +3,40 @@
 :host {
   @extend %dim-viewport;
 
-  display: flex;
-  flex-direction: column;
+  $header-height: 50px;
+  $footer-height: 50px;
 
   aj-header {
-    @extend %inflexible;
-    @extend %pos-relative;
+    @extend %pos-fixed;
     @extend %shadow-y;
+    @extend %layer-chrome;
     top: 0;
     right: 0;
     left: 0;
-    height: max-content;
+    height: $header-height;
   }
 
-  main {
-    @extend %flexible;
-    @extend %dim-parent;
-    @extend %layer-content;
-    @extend %p-default;
-  }
-
-  aj-footer {
-    @extend %inflexible;
-    @extend %pos-relative;
+  div {
+    @extend %s-none;
+    @extend %pos-fixed;
+    @extend %flex-v;
+    overflow-y: scroll;
+    top: $header-height;
     right: 0;
     bottom: 0;
     left: 0;
-    height: max-content;
+
+    main {
+      @extend %s-default;
+      @extend %flexible;
+      @extend %pos-relative;
+    }
+
+    aj-footer {
+      @extend %s-none;
+      @extend %inflexible;
+      @extend %pos-relative;
+      height: $footer-height;
+    }
   }
 }

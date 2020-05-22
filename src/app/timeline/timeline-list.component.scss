@@ -2,15 +2,23 @@
 
 :host {
   @extend %flex-h;
-  position: relative;
 }
 
 div[role="list"] {
+  @extend %m-default;
   @extend %flexible;
   max-width: 800px;
+
+  aj-timeline-project:not(:first-child) {
+    @extend %mt-default;
+  }
+  aj-timeline-project:not(:last-child) {
+    @extend %mb-default;
+  }
 }
 
 div[role="img"] {
+  @extend %m-default;
   @extend %inflexible;
   background: styles.$color-content-background;
 }

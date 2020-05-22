@@ -1,10 +1,9 @@
 @use '../../styles';
 
 :host {
-  display: block;
-  position: relative;
+  @extend %dis-block;
+  @extend %pos-relative;
   background: styles.$color-content-background;
-  @extend %m-default;
   border-radius: styles.$size-spacer;
   box-shadow: styles.$shadow;
 

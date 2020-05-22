@@ -1,6 +1,7 @@
 <section>
-    <header>{{ project.title }}</header>
+    <header><h1>{{ project.title }}</h1></header>
     <div [innerHTML]="project.contentHtml"></div>
+    <small *ngIf="project.parent">Parent: {{ project.parent.id }}</small>
     <footer *ngIf="project.tags">
         <a *ngFor="let t of project.tags; trackBy: tagTrackBy" [href]="t?.hyperlink">{{ t?.title }}</a>
     </footer>

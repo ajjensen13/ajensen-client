@@ -1,12 +1,8 @@
 @use '../../../styles';
 
-$header-min-height: 50px;
-
 header {
   @extend %dis-block;
-  @extend %width-parent;
-  @extend %layer-chrome;
+  @extend %dim-parent;
   background-color: styles.$color-foreground-default;
   color: styles.$color-background-default;
-  min-height: $header-min-height;
 }
