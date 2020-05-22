@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Project } from '../models/project';
+import { Tag } from '../models/tag';
 
 @Component({
   selector: 'aj-timeline-project',
@@ -12,5 +13,9 @@ export class TimelineProjectComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  tagTrackBy(index: number, item?: Tag) {
+    return item?.id;
   }
 }
