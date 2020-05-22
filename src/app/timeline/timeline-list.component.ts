@@ -1,8 +1,8 @@
 import { AfterViewChecked, Component, ElementRef, Input, OnDestroy, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { Project } from '../models/project';
 import { Observable, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { TimelineProjectComponent } from './timeline-project.component';
+import { TimelineProject } from '../models/timeline-project';
 
 @Component({
   selector: 'aj-timeline-list',
@@ -10,9 +10,10 @@ import { TimelineProjectComponent } from './timeline-project.component';
   styleUrls: ['./timeline-list.component.scss'],
 })
 export class TimelineListComponent implements OnInit, OnDestroy, AfterViewChecked {
-  @Input() projects: Observable<Project[]>;
+  @Input() projects: Observable<TimelineProject[]>;
+  @ViewChildren(TimelineProjectComponent, { read: ElementRef }) anchors: QueryList<ElementRef>;
 
-  @ViewChildren(TimelineProjectComponent, {read: ElementRef}) timelineListElements: QueryList<ElementRef>;
+  constructor() {}
 
   private dirty: boolean;
   private projectsSub: Subscription;
@@ -31,11 +32,11 @@ export class TimelineListComponent implements OnInit, OnDestroy, AfterViewChecke
     if ( !this.dirty ) { return; }
     this.dirty = false;
 
-    for (const p of this.timelineListElements) {
-      if (!p?.nativeElement) {
+    for (const a of this.anchors) {
+      if (!a?.nativeElement) {
         continue;
       }
-      const dy = p.nativeElement.offsetHeight;
+      const dy = a.nativeElement.offsetHeight;
       console.log(dy);
     }
   }

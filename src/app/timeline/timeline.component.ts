@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TimelineService } from '../services/timeline.service';
-import { Project } from '../models/project';
 import { Observable } from 'rxjs';
+import { TimelineProject } from '../models/timeline-project';
 
 @Component({
   selector: 'aj-timeline',
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./timeline.component.scss']
 })
 export class TimelineComponent implements OnInit {
-  timeline: Observable<Project[]>;
+  timeline: Observable<TimelineProject[]>;
 
   constructor(private timelineService: TimelineService) {}
 

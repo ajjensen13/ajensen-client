@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Project } from '../models/project';
 import { Tag } from '../models/tag';
+import { TimelineProject } from '../models/timeline-project';
 
 @Component({
   selector: 'aj-timeline-project',
@@ -8,7 +8,7 @@ import { Tag } from '../models/tag';
   styleUrls: ['./timeline-project.component.scss']
 })
 export class TimelineProjectComponent implements OnInit {
-  @Input() project: Project;
+  @Input() project: TimelineProject;
 
   constructor() { }
 
