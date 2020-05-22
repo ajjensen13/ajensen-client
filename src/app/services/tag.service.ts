@@ -11,9 +11,8 @@ import { Observable } from 'rxjs';
 export class TagService {
 
   constructor(private http: HttpClient) {
-    this.apiUrl = environment.apiUrl;
     this.tags = http
-        .get<Tag[]>(this.apiUrl + '/tags')
+        .get<Tag[]>(environment.apiUrl + '/tags')
         .pipe(
             map(js => js.map(j => TagService.jsonTagToTag(j))),
             shareReplay(1)
@@ -30,7 +29,7 @@ export class TagService {
             })
         );
   }
-  private readonly apiUrl: string;
+
   private readonly tags: Observable<Tag[]>;
   private readonly tagLookup: Observable<Map<string, Tag>>;
 
