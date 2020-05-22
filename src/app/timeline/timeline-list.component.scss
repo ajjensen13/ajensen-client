@@ -2,6 +2,7 @@
 
 :host {
   @extend %flex-h;
+  position: relative;
 }
 
 div[role="list"] {

@@ -2,6 +2,7 @@
 
 :host {
   display: block;
+  position: relative;
   background: styles.$color-content-background;
   @extend %m-default;
   border-radius: styles.$size-spacer;
@@ -54,7 +55,6 @@
         border: 1px solid styles.$color-background-accent;
         border-radius: styles.$size-spacer;
         color: styles.$color-foreground-default;
-        transition: border 0.25s, margin 0.25s;
 
         &:hover {
           border: 2px solid styles.$color-foreground-default;
