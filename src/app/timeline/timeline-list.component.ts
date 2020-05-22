@@ -1,5 +1,6 @@
-import { Component, ContentChildren, OnInit, QueryList } from '@angular/core';
-import { TimelineListItemDirective } from './timeline-list-item.directive';
+import { Component, Input, OnInit } from '@angular/core';
+import { Project } from '../models/project';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'aj-timeline-list',
@@ -7,7 +8,7 @@ import { TimelineListItemDirective } from './timeline-list-item.directive';
   styleUrls: ['./timeline-list.component.scss']
 })
 export class TimelineListComponent implements OnInit {
-  @ContentChildren(TimelineListItemDirective, { descendants: false } ) listItems: QueryList<TimelineListItemDirective>;
+  @Input() listItems: Observable<Project[]>;
 
   ngOnInit(): void {
 

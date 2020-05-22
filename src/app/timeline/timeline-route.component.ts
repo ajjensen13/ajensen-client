@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
-  selector: 'aj-timeline-route',
+  selector: 'aj-route',
   templateUrl: './timeline-route.component.html',
   styleUrls: ['./timeline-route.component.scss'],
   animations: [

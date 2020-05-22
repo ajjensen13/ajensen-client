@@ -3,7 +3,7 @@ import { ServerModule } from '@angular/platform-server';
 
 import { AppModule } from '../app/app.module';
 import { AppComponent } from '../app/app.component';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { AppShellComponent } from './app-shell.component';
 
 const routes: Routes = [ { path: 'shell', component: AppShellComponent }];

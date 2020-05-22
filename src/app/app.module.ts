@@ -10,10 +10,11 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { RouterModule } from '@angular/router';
-import { TimelineRouteComponent } from './timeline/timeline-route/timeline-route.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TimelineProjectComponent } from './timeline/timeline-project.component';
 import { TimelineListComponent } from './timeline/timeline-list.component';
-import { TimelineListItemDirective } from './timeline/timeline-list-item.directive';
+import { HttpClientModule } from '@angular/common/http';
+import { TimelineRouteComponent } from './timeline/timeline-route.component';
 
 @NgModule({
   declarations: [
@@ -22,16 +23,17 @@ import { TimelineListItemDirective } from './timeline/timeline-list-item.directi
     HeaderComponent,
     FooterComponent,
     TimelineComponent,
-    TimelineRouteComponent,
+    TimelineProjectComponent,
     TimelineListComponent,
-    TimelineListItemDirective
+    TimelineRouteComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     RouterModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   exports: [
