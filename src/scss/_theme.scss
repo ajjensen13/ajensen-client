@@ -1,15 +1,24 @@
-@use 'variables';
+@use 'variables' as v;
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;1,100;1,400&display=swap');
 
 :root {
-  font-size: variables.$size-root;
+  font-size: v.$size-root;
 }
 
 body {
-  color: variables.$color-foreground-default;
-  background-color: variables.$color-background-default;
+  color: v.$color-foreground-default;
+  background-color: v.$color-background-default;
 }
 
 * {
   font-family: 'Roboto', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: v.$color-foreground-accent;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }

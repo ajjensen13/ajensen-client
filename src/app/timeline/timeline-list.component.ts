@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./timeline-list.component.scss']
 })
 export class TimelineListComponent implements OnInit {
-  @Input() listItems: Observable<Project[]>;
+  @Input() projects: Observable<Project[]>;
 
   ngOnInit(): void {
 

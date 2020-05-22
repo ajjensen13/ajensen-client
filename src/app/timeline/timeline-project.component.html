@@ -1,1 +1,7 @@
-<p>timeline-project works!</p>
+<section>
+    <header>{{ project.title }}</header>
+    <div [innerHTML]="project.contentHtml"></div>
+    <footer *ngIf="project.tags">
+        <a *ngFor="let t of project.tags" [href]="t?.hyperlink">{{ t?.title }}</a>
+    </footer>
+</section>

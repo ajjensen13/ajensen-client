@@ -1,0 +1,15 @@
+@use '../../styles';
+
+:host {
+  @extend %flex-h;
+}
+
+div[role="list"] {
+  @extend %flexible;
+  max-width: 800px;
+}
+
+div[role="img"] {
+  @extend %inflexible;
+  background: styles.$color-content-background;
+}

@@ -2,6 +2,7 @@
 $color-foreground-accent: #ed8733;
 $color-foreground-default: #476040;
 $color-foreground-muted: #789174;
+$color-content-background: #ffffff;
 $color-background-default: #efeeea;
 $color-background-accent: #d2dac3;
 $color-shadow: #65808080;
@@ -12,6 +13,7 @@ $size-root: 16px;
 $size-spacer: 4px;
 $sizes: none tight default cozy;
 $size-factors: (none: 0, tight: 0.5, default: 1, cozy: 1.5);
+$font-size-factors: (1: 2, 2: 1.5, 3: 1.25, 4: 1, 5: 1, 6: 1);
 
 // Shadows
 $shadow-x: $size-spacer;

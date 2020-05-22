@@ -1,0 +1,68 @@
+@use '../../styles';
+
+:host {
+  display: block;
+  background: styles.$color-content-background;
+  @extend %m-default;
+  border-radius: styles.$size-spacer;
+  box-shadow: styles.$shadow;
+
+  section {
+    @extend %pt-default;
+    @extend %pb-tight;
+    @extend %ph-default;
+
+    header {
+      font-size: map_get(styles.$font-size-factors, 2) * styles.$size-root;
+      @extend %sb-tight;
+      border-bottom: 1px solid styles.$color-background-default;
+    }
+
+    ::ng-deep {
+      h1 {
+        font-size: map_get(styles.$font-size-factors, 3) * styles.$size-root
+      }
+      h2 {
+        font-size: map_get(styles.$font-size-factors, 4) * styles.$size-root
+      }
+      h3 {
+        font-size: map_get(styles.$font-size-factors, 5) * styles.$size-root
+      }
+      ol, ul {
+        padding-left: styles.$size-root * 2;
+      }
+      p, ol, ul {
+        @extend %mv-tight;
+      }
+    }
+
+    footer {
+      border-top: 1px dotted styles.$color-background-default;
+      font-size: x-small;
+      @extend %st-tight;
+      @extend %flex-h;
+      @extend %flex-wrap;
+      @extend %justify-content-center;
+      flex-wrap: wrap;
+
+      > a {
+        @extend %inflexible;
+        background-color: styles.$color-background-default;
+        display: inline-block;
+        padding: styles.$size-spacer;
+        margin: styles.$size-spacer;
+        border: 1px solid styles.$color-background-accent;
+        border-radius: styles.$size-spacer;
+        color: styles.$color-foreground-default;
+        transition: border 0.25s, margin 0.25s;
+
+        &:hover {
+          border: 2px solid styles.$color-foreground-default;
+          margin: styles.$size-spacer - 1px;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+

@@ -1,3 +1,4 @@
-<ng-container *ngFor="let li of listItems | async">
-  <div>{{ li.title }}</div>
-</ng-container>
+<div role="img" [style.width.px]="50"></div>
+<div role="list">
+  <aj-timeline-project *ngFor="let p of projects | async" [project]="p" role="listitem"></aj-timeline-project>
+</div>
