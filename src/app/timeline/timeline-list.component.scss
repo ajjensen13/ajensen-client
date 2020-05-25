@@ -18,7 +18,7 @@ div[role="list"] {
 }
 
 div[role="img"] {
-  @extend %m-default;
+  @extend %mh-default;
   @extend %inflexible;
   background: styles.$color-content-background;
 }

@@ -1,4 +1,13 @@
-<div role="img" [style.width.px]="50"></div>
+<div role="img" [style.width.px]="50" #routeContainer>
+  <aj-timeline-route
+    [renderedProjects]="renderedProjects"
+    [height]="routeContainerDim.height"
+    [width]="routeContainerDim.width"
+  ></aj-timeline-route>
+</div>
 <div role="list">
-  <aj-timeline-project *ngFor="let p of projects | async" [project]="p" role="listitem"></aj-timeline-project>
+  <aj-timeline-project
+    *ngFor="let p of projects | async"
+    [project]="p" role="listitem"
+    (render)="onProjectRendered($event, p)"></aj-timeline-project>
 </div>

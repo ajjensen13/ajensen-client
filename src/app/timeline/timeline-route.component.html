@@ -1,12 +1,9 @@
-<svg class="route-circle" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <path [@active]="!!isActive"
-        fill="none"
-        stroke-width="10"
-        pathLength="100"
-        stroke-dasharray="75 25"
-        d="
-          M 50 95
-          a 45 45 0 0 0 0 -90
-          a 45 45 0 0 0 0 90
-          " />
+<svg [style.height.px]="height" [style.width.px]="width" [attr.viewBox]="viewBox" xmlns="http://www.w3.org/2000/svg">
+  <path *ngFor="let p of paths"
+      [@draw]
+      [attr.stroke]="p.stroke"
+      [attr.fill]="p.fill ? p.fill : 'none'"
+      [attr.stroke-width]="p.strokeWidth"
+      [attr.pathLength]="100"
+      [attr.d]="p.d" />
 </svg>

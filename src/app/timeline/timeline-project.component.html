@@ -3,6 +3,6 @@
     <div [innerHTML]="project.contentHtml"></div>
     <small *ngIf="project.parent">Parent: {{ project.parent.id }}</small>
     <footer *ngIf="project.tags">
-        <a *ngFor="let t of project.tags; trackBy: tagTrackBy" [href]="t?.hyperlink">{{ t?.title }}</a>
+        <a *ngFor="let t of project.tags" [href]="t?.hyperlink">{{ t?.title }}</a>
     </footer>
 </section>

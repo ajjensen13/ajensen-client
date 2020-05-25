@@ -3,14 +3,12 @@
 $width: 20px;
 
 :host {
-  @extend %p-default;
+  @extend %s-none;
+  @extend %dis-block;
+  @extend %dim-parent;
 }
 
-.route-circle {
-  width: $width;
-  height: max-content;
-
-  * {
-    stroke: styles.$color-foreground-muted;
-  }
+svg {
+  width: max-content;
+  @extend %height-parent;
 }
