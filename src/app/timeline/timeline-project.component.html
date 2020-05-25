@@ -1,4 +1,4 @@
-<section>
+<section [style.border-left-color]="project.color">
     <header><h1>{{ project.title }}</h1></header>
     <div [innerHTML]="project.contentHtml"></div>
     <small *ngIf="project.parent">Parent: {{ project.parent.id }}</small>

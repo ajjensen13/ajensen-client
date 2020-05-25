@@ -1,10 +1,24 @@
 import { Injectable } from '@angular/core';
-import { Project } from '../models/project';
-import { TagService } from './tag.service';
+import { Tag, TagService } from './tag.service';
 import { HttpClient } from '@angular/common/http';
 import { from, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { concatMap, map, mergeAll, mergeMap, shareReplay, toArray } from 'rxjs/operators';
+
+export class Project {
+    id: string;
+    title: string;
+    contentHtml: string;
+    startDate: Date;
+    endDate?: Date;
+    tags: Tag[];
+    parent?: string;
+    color: string;
+
+    constructor(init?: Partial<Project>) {
+        Object.assign(this, init);
+    }
+}
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +50,11 @@ export class ProjectService {
   }
 
   private static jsonProjectToProject(tagService: TagService, j: JsonProject): Observable<Project> {
-    return from(j.tags)
+    let tags = j.tags;
+    if (!tags) {
+      tags = [];
+    }
+    return from(tags)
       .pipe(
         concatMap(id => tagService.getTag(id)),
         toArray()
@@ -49,7 +67,8 @@ export class ProjectService {
           startDate: new Date(j.startDate),
           endDate: j.endDate ? new Date(j.endDate) : undefined,
           tags: ts,
-          parent: j.parent
+          parent: j.parent,
+          color: j.color
         }))
       );
   }
@@ -72,6 +91,7 @@ class JsonProject {
   tags?: string[];
   endDate?: string;
   parent: string;
+  color: string;
 
   constructor(init?: Partial<JsonProject>) {
     Object.assign(this, init);

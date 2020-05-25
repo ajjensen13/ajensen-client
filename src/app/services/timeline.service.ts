@@ -1,9 +1,24 @@
 import { Injectable } from '@angular/core';
-import { Project } from '../models/project';
-import { ProjectService } from './project.service';
+import { Project, ProjectService } from './project.service';
 import { Observable } from 'rxjs';
-import { TimelineProject } from '../models/timeline-project';
 import { map } from 'rxjs/operators';
+import { Tag } from './tag.service';
+
+export class TimelineProject {
+  id: string;
+  title: string;
+  contentHtml: string;
+  startDate: Date;
+  endDate?: Date;
+  tags: Tag[];
+  parent?: TimelineProject;
+  children: TimelineProject[];
+  color: string;
+
+  constructor(init?: Partial<TimelineProject>) {
+    Object.assign(this, init);
+  }
+}
 
 @Injectable({
   providedIn: 'root'

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Tag } from '../models/tag';
-import { TimelineProject } from '../models/timeline-project';
+import { TimelineProject } from '../services/timeline.service';
+import { Tag } from '../services/tag.service';
 
 @Component({
   selector: 'aj-timeline-project',

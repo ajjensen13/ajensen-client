@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TimelineService } from '../services/timeline.service';
+import { TimelineProject, TimelineService } from '../services/timeline.service';
 import { Observable } from 'rxjs';
-import { TimelineProject } from '../models/timeline-project';
 
 @Component({
   selector: 'aj-timeline',

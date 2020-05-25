@@ -11,6 +11,7 @@
     @extend %pt-default;
     @extend %pb-tight;
     @extend %ph-default;
+    border-left: styles.$size-spacer solid styles.$color-foreground-muted;
 
     header {
       font-size: map_get(styles.$font-size-factors, 2) * styles.$size-root;

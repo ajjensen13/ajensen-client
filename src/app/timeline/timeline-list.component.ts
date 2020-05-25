@@ -2,7 +2,7 @@ import { AfterViewChecked, Component, ElementRef, Input, OnDestroy, OnInit, Quer
 import { Observable, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { TimelineProjectComponent } from './timeline-project.component';
-import { TimelineProject } from '../models/timeline-project';
+import { TimelineProject } from '../services/timeline.service';
 
 @Component({
   selector: 'aj-timeline-list',

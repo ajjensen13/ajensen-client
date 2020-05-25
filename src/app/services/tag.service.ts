@@ -1,9 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Tag } from '../models/tag';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { map, shareReplay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+
+export class Tag {
+    id: string;
+    title: string;
+    hyperlink: string;
+    color: string;
+
+    constructor(init?: Partial<Tag>) {
+        Object.assign(this, init);
+    }
+}
 
 @Injectable({
   providedIn: 'root'
@@ -34,11 +44,7 @@ export class TagService {
   private readonly tagLookup: Observable<Map<string, Tag>>;
 
   private static jsonTagToTag(j: JsonTag): Tag {
-    return new Tag({
-      id: j.id,
-      title: j.title,
-      hyperlink: j.hyperlink
-    });
+    return new Tag(j);
   }
 
   getTags(): Observable<Tag[]> {
@@ -55,6 +61,7 @@ export class JsonTag {
   id: string;
   title: string;
   hyperlink: string;
+  color: string;
 
   constructor(init?: Partial<JsonTag>) {
     Object.assign(this, init);
