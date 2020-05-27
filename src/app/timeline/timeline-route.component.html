@@ -1,9 +1,10 @@
 <svg [style.height.px]="height" [style.width.px]="width" [attr.viewBox]="viewBox" xmlns="http://www.w3.org/2000/svg">
-  <path *ngFor="let p of paths"
-      [@draw]
-      [attr.stroke]="p.stroke"
-      [attr.fill]="p.fill ? p.fill : 'none'"
-      [attr.stroke-width]="p.strokeWidth"
+  <path *ngFor="let p of paths; index as ndx; trackBy:trackByPath"
+      [@drawn]="p.drawn"
+      (@drawn.done)="pathDrawDone(p.id)"
+      [attr.stroke]="p.path.stroke"
+      [attr.fill]="p.path.fill ? p.path.fill : 'none'"
+      [attr.stroke-width]="p.path.strokeWidth"
       [attr.pathLength]="100"
-      [attr.d]="p.d" />
+      [attr.d]="p.path.d" />
 </svg>

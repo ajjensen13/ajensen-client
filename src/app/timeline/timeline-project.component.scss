@@ -3,15 +3,36 @@
 :host {
   @extend %dis-block;
   @extend %pos-relative;
-  background: styles.$color-content-background;
-  border-radius: styles.$size-spacer;
-  box-shadow: styles.$shadow;
+
+  &:not(:first-child) {
+    @extend %mt-default;
+  }
+
+  &:not(:last-child) {
+    @extend %mb-default;
+  }
+
+  .time-range {
+    @extend %flex-h;
+    @extend %justify-content-flex-start;
+    @extend %pos-relative;
+    @extend %p-tight;
+    font-style: italic;
+    color: styles.$color-foreground-muted;
+
+    > * {
+      @extend %ph-tight;
+    }
+  }
 
   section {
     @extend %pt-default;
     @extend %pb-tight;
     @extend %ph-default;
-    border-left: styles.$size-spacer solid styles.$color-foreground-muted;
+    @extend %pos-relative;
+    background: styles.$color-content-background;
+    border-radius: styles.$size-spacer;
+    box-shadow: styles.$shadow;
 
     header {
       font-size: map_get(styles.$font-size-factors, 2) * styles.$size-root;

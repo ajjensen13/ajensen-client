@@ -2,10 +2,11 @@
 
 :host {
   @extend %flex-h;
+  @extend %pos-relative;
 }
 
 div[role="list"] {
-  @extend %m-default;
+  @extend %mv-default;
   @extend %flexible;
   max-width: 800px;
 
@@ -18,7 +19,6 @@ div[role="list"] {
 }
 
 div[role="img"] {
-  @extend %mh-default;
   @extend %inflexible;
-  background: styles.$color-content-background;
+  width: max-content;
 }

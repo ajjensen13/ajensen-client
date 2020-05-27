@@ -1,8 +1,10 @@
+import { RelativeDimensions } from './relative-dimensions';
+
 export class RenderedProject {
-  offsetHeight: number;
-  offsetWidth: number;
-  offsetLeft: number;
-  offsetTop: number;
+  id: string;
+  timelineProject: RelativeDimensions;
+  timeRange: RelativeDimensions;
+  content: RelativeDimensions;
   color: string;
 
   constructor(init?: Partial<RenderedProject>) {

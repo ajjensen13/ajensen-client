@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { RenderedProject } from './rendered-project';
 
 @Component({
@@ -7,10 +7,11 @@ import { RenderedProject } from './rendered-project';
   templateUrl: './timeline-route.component.html',
   styleUrls: ['./timeline-route.component.scss'],
   animations: [
-    trigger('draw', [
-      transition(':enter', [
-        style({ strokeDasharray: '0 100' }),
-        animate('500ms', style({ strokeDasharray: '100 0' }))
+    trigger('drawn', [
+      state('false', style({ strokeDasharray: '0 100' })),
+      state('true', style({ strokeDasharray: '100 0' })),
+      transition('false <=> true', [
+        animate('200ms')
       ]),
     ])
   ]
@@ -22,25 +23,92 @@ export class TimelineRouteComponent implements OnInit, OnChanges {
 
   viewBox: string;
 
-  paths: Path[];
+  private animating: boolean;
+
+  paths: DrawnPath[];
 
   constructor() {  }
 
+  trackByPath(index: number, path: DrawnPath): string {
+    return path.id;
+  }
+
   ngOnChanges(changes: SimpleChanges) {
-    this.viewBox = `0 0 ${this.width} ${this.height}`;
-    this.paths = [];
-    const strokeWidth = 10;
+    const newPaths: DrawnPath[] = [];
+    const strokeWidth = 2;
+    const layerWidth = strokeWidth * 8;
+    let maxLayer = 1;
     for (const p of this.renderedProjects) {
-      this.paths.push(
-        new PathBuilder({ strokeWidth, stroke: p.color })
-          .moveAbs(strokeWidth / 2, p.offsetTop)
-          .verticalLineRel(p.offsetHeight)
-          .path()
-      );
+      const layer = 1; // TODO make this dynamic based on parent projects
+      const top = p.timelineProject.offsetTop;
+      // const bottom = p.timelineProject.offsetTop + p.timelineProject.offsetHeight;
+      const topTimeRange = top + p.timeRange.offsetTop;
+      const bottomTimeRange = topTimeRange + p.timeRange.offsetHeight;
+      const middleTimeRange = (bottomTimeRange - topTimeRange) / 2 + topTimeRange;
+      const topContent = top + p.content.offsetTop;
+      // const bottomContent = topContent + p.Content.offsetHeight;
+      const vLength = (topContent - middleTimeRange) + p.content.offsetHeight;
+      newPaths.push(new DrawnPath({
+        path: new PathBuilder({ strokeWidth, stroke: p.color })
+          .moveAbs(this.width, middleTimeRange - strokeWidth / 2 )
+          .horizontalLineRel((-layer * layerWidth) + strokeWidth)
+          .verticalLineRel(vLength)
+          .path(),
+        drawn: false,
+        id: p.id
+      }));
+      maxLayer = Math.max(maxLayer, layer);
+    }
+
+    if (this.paths) {
+      for (const path of this.paths) {
+        for (const newPath of newPaths) {
+          if (path.id === newPath.id) {
+            newPath.drawn = path.drawn;
+          }
+        }
+      }
+    }
+    this.paths = newPaths;
+
+    this.width = layerWidth * maxLayer;
+    this.viewBox = `0 0 ${this.width} ${this.height}`;
+
+    if (!this.animating) {
+      this.animateNextPath();
     }
   }
 
   ngOnInit(): void {
+  }
+
+  pathDrawDone(id: string) {
+    const start = this.paths.findIndex((dp) => dp.id === id);
+    if (start < 0) {
+      throw new Error('drawn path not found');
+    }
+
+    this.animateNextPath(start);
+  }
+
+  private animateNextPath(start?: number) {
+    if (this.paths.length < 1) {
+      return;
+    }
+
+    if (start === undefined) {
+      start = -1;
+    }
+
+    this.animating = true;
+    for (let i = (start + 1) % this.paths.length; i !== start; i = (i + 1) % this.paths.length) {
+      if (this.paths[i].drawn) {
+        continue;
+      }
+      setTimeout(() => this.paths[i].drawn = true, 0);
+      return;
+    }
+    this.animating = false;
   }
 }
 
@@ -106,6 +174,16 @@ class PathBuilder {
   verticalLineAbs(y: number): PathBuilder {
     this.d.push(`V ${y}`);
     return this;
+  }
+}
+
+class DrawnPath {
+  path: Path;
+  id: string;
+  drawn: boolean;
+
+  constructor(init?: Partial<DrawnPath>) {
+    Object.assign(this, init);
   }
 }
 
