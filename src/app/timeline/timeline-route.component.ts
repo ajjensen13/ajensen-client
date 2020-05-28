@@ -49,7 +49,7 @@ export class TimelineRouteComponent implements OnInit, OnChanges {
       // const bottomContent = topContent + p.Content.offsetHeight;
       const vLength = (topContent - middleTimeRange) + p.content.offsetHeight;
       newPaths.push(new DrawnPath({
-        path: new PathBuilder({ strokeWidth, stroke: p.color })
+        path: new PathBuilder({ strokeWidth, stroke: p.project.color })
           .moveAbs(this.width, middleTimeRange - strokeWidth / 2 )
           .horizontalLineRel((-layer * layerWidth) + strokeWidth)
           .verticalLineRel(vLength)

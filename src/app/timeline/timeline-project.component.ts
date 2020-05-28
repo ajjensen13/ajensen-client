@@ -43,8 +43,8 @@ export class TimelineProjectComponent implements OnInit, AfterViewInit {
             offsetLeft: this.content.nativeElement.offsetLeft,
             offsetTop: this.content.nativeElement.offsetTop,
           }),
-          color: this.project.color,
-          id: this.project.id
+          id: this.project.id,
+          project: this.project
         })
     ), 0);
   }
