@@ -1,4 +1,4 @@
-<svg [style.height.px]="height" [style.width.px]="width" [attr.viewBox]="viewBox" xmlns="http://www.w3.org/2000/svg">
+<svg [style.height.px]="this.heightPx" [style.width.px]="this.widthPx" [attr.viewBox]="viewBox" xmlns="http://www.w3.org/2000/svg">
   <path *ngFor="let p of paths; index as ndx; trackBy:trackByPath"
       [@drawn]="p.drawn"
       (@drawn.done)="pathDrawDone(p.id)"

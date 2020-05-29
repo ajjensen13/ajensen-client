@@ -1,5 +1,6 @@
 // colors
 $color-foreground-accent: #ed8733;
+$color-font-default: #000000;
 $color-foreground-default: #476040;
 $color-foreground-muted: #789174;
 $color-content-background: #ffffff;
@@ -21,3 +22,11 @@ $shadow-y: $size-spacer;
 $shadow-blur: $size-spacer / 2;
 $shadow-color: $color-shadow;
 $shadow: $shadow-x $shadow-y $shadow-blur $shadow-color;
+
+// Breakpoints
+$bp-default: 0px;
+$bp-phone: 576px;
+$bp-tablet: 768px;
+$bp-desktop: 992px;
+$bp-widescreen: 1200px;
+$minimum-screen-width: 450px;

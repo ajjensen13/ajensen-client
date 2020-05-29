@@ -15,6 +15,8 @@ import { TimelineProjectComponent } from './timeline/timeline-project.component'
 import { TimelineListComponent } from './timeline/timeline-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TimelineRouteComponent } from './timeline/timeline-route.component';
+import { LightenColorPipePipe } from './timeline/lighten-color.pipe';
+import { FadeColorPipe } from './timeline/fade-color.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { TimelineRouteComponent } from './timeline/timeline-route.component';
     TimelineComponent,
     TimelineProjectComponent,
     TimelineListComponent,
-    TimelineRouteComponent
+    TimelineRouteComponent,
+    LightenColorPipePipe,
+    FadeColorPipe
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),

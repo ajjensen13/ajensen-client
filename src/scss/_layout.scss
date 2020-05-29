@@ -1,4 +1,5 @@
 @use 'dimensions';
+@use 'variables';
 @import 'reset';
 
 html, body {
@@ -43,6 +44,10 @@ html, body {
   justify-content: flex-end;
 }
 
+%align-items-center {
+  align-items: center;
+}
+
 %flexible {
   flex-grow: 1;
   flex-shrink: 1;
@@ -52,3 +57,35 @@ html, body {
   flex-grow: 0;
   flex-shrink: 0;
 }
+
+body {
+  min-width: variables.$minimum-screen-width;
+}
+
+.content-container {
+  width: 100%;
+}
+
+@media(min-width: variables.$bp-phone) {
+  .content-container {
+    width: variables.$bp-phone;
+  }
+}
+
+@media(min-width: variables.$bp-tablet) {
+  .content-container {
+    width: variables.$bp-tablet;
+  }
+}
+
+@media(min-width: variables.$bp-desktop) {
+  .content-container {
+    width: variables.$bp-desktop;
+  }
+}
+
+//@media(min-width: variables.$bp-widescreen) {
+//  //.content-container {
+//  //  width: variables.$bp-widescreen;
+//  //}
+//}

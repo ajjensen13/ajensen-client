@@ -1,11 +1,12 @@
 @use '../../../styles';
 
 :host {
-  @extend %dis-block;
   @extend %dim-parent;
   background-color: darken(styles.$color-background-default, 5%);
 }
 
 footer {
-  @extend %p-default;
+  @extend %pv-default;
+  @extend %flex-h;
+  @extend %justify-content-center;
 }

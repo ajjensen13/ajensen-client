@@ -17,6 +17,9 @@
       @extend %p#{d.abbreviation($d)}-#{$s};
       @extend %m#{d.abbreviation($d)}-#{$s};
     }
+    %m#{d.abbreviation($d)}-auto {
+      margin-#{$d}: auto;
+    }
   }
   @each $c in d.cardinal_combinations() {
     @each $d in d.combination_to_directions($c) {
@@ -30,7 +33,13 @@
         @extend %p#{d.abbreviation($d)}-#{$s};
         @extend %m#{d.abbreviation($d)}-#{$s};
       }
+      %m#{d.abbreviation($c)}-auto {
+        @extend %m#{d.abbreviation($d)}-auto;
+      }
     }
+  }
+  %m-auto {
+    margin: auto;
   }
   %p-#{$s} {
     padding: size($s);

@@ -20,6 +20,7 @@
     @extend %s-none;
     @extend %pos-fixed;
     @extend %flex-v;
+    @extend %align-items-center;
     overflow-y: scroll;
     top: $header-height;
     right: 0;

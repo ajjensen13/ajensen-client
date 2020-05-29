@@ -11,23 +11,34 @@ import { RenderedTimelineProject } from './rendered-timeline-project';
       state('false', style({ strokeDasharray: '0 100' })),
       state('true', style({ strokeDasharray: '100 0' })),
       transition('false <=> true', [
-        animate('200ms')
+        animate('500ms ease-in-out', )
       ]),
     ])
   ]
 })
 export class TimelineRouteComponent implements OnInit, OnChanges {
-  @Input() renderedProjects: RenderedTimelineProject[];
-  @Input() height: number;
-  @Input() width: number;
 
+  constructor() {  }
+  @Input() renderedProjects: RenderedTimelineProject[];
   viewBox: string;
 
   private animating: boolean;
+  private strokeWidth: number;
+  private layerWidth: number;
+  widthPx: number;
+  heightPx: number;
 
   paths: DrawnPath[];
 
-  constructor() {  }
+  private static calculateWidth(layers: number, layerWidth: number): number {
+    return layerWidth * layers;
+  }
+
+  ngOnInit(): void {
+    this.strokeWidth = 2;
+    this.layerWidth = this.strokeWidth * 8;
+    this.widthPx = TimelineRouteComponent.calculateWidth(1, this.layerWidth);
+  }
 
   trackByPath(index: number, path: DrawnPath): string {
     return path.id;
@@ -35,13 +46,11 @@ export class TimelineRouteComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     const newPaths: DrawnPath[] = [];
-    const strokeWidth = 2;
-    const layerWidth = strokeWidth * 8;
-    let maxLayer = 1;
+    let maxY = 0;
     for (const p of this.renderedProjects) {
       const layer = 1; // TODO make this dynamic based on parent projects
       const top = p.projectDimensions.offsetTop;
-      // const bottom = p.timelineProject.offsetTop + p.timelineProject.offsetHeight;
+      const bottom = p.projectDimensions.offsetTop + p.projectDimensions.offsetHeight;
       const topTimeRange = top + p.timeRangeDimensions.offsetTop;
       const bottomTimeRange = topTimeRange + p.timeRangeDimensions.offsetHeight;
       const middleTimeRange = (bottomTimeRange - topTimeRange) / 2 + topTimeRange;
@@ -49,15 +58,16 @@ export class TimelineRouteComponent implements OnInit, OnChanges {
       // const bottomContent = topContent + p.Content.offsetHeight;
       const vLength = (topContent - middleTimeRange) + p.contentDimensions.offsetHeight;
       newPaths.push(new DrawnPath({
-        path: new PathBuilder({ strokeWidth, stroke: p.project.color })
-          .moveAbs(this.width, middleTimeRange - strokeWidth / 2 )
-          .horizontalLineRel((-layer * layerWidth) + strokeWidth)
+        path: new PathBuilder({ strokeWidth: this.strokeWidth, stroke: p.project.color })
+          .moveAbs(this.layerWidth, middleTimeRange - this.strokeWidth / 2 )
+          .horizontalLineRel((-layer * this.layerWidth) + this.strokeWidth)
           .verticalLineRel(vLength)
           .path(),
         drawn: false,
         id: p.project.id
       }));
-      maxLayer = Math.max(maxLayer, layer);
+
+      maxY = Math.max(maxY, bottom);
     }
 
     if (this.paths) {
@@ -71,15 +81,13 @@ export class TimelineRouteComponent implements OnInit, OnChanges {
     }
     this.paths = newPaths;
 
-    this.width = layerWidth * maxLayer;
-    this.viewBox = `0 0 ${this.width} ${this.height}`;
+    this.widthPx = TimelineRouteComponent.calculateWidth(1, this.layerWidth);
+    this.heightPx = maxY;
+    this.viewBox = `0 0 ${this.widthPx} ${this.heightPx}`;
 
     if (!this.animating) {
       this.animateNextPath();
     }
-  }
-
-  ngOnInit(): void {
   }
 
   pathDrawDone(id: string) {
@@ -88,20 +96,18 @@ export class TimelineRouteComponent implements OnInit, OnChanges {
       throw new Error('drawn path not found');
     }
 
-    this.animateNextPath(start);
+    this.animateNextPath();
   }
 
-  private animateNextPath(start?: number) {
+  private animateNextPath() {
     if (this.paths.length < 1) {
       return;
     }
 
-    start = start || 0;
-
     this.animating = true;
-    for (let offset = 0, ndx = start; offset < this.paths.length; offset++, ndx = (ndx + 1) % this.paths.length) {
-      if (!this.paths[ndx].drawn) {
-        setTimeout(() => this.paths[ndx].drawn = true, 0);
+    for (const path of this.paths) {
+      if (!path.drawn) {
+        setTimeout(() => path.drawn = true, 0);
         return;
       }
     }

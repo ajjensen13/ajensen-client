@@ -61,7 +61,9 @@
     footer {
       border-top: 1px dotted styles.$color-background-default;
       font-size: x-small;
-      @extend %st-tight;
+      font-weight: 400;
+      @extend %mt-cozy;
+      @extend %pt-tight;
       @extend %flex-h;
       @extend %flex-wrap;
       @extend %justify-content-center;
@@ -69,16 +71,17 @@
 
       > a {
         @extend %inflexible;
-        background-color: styles.$color-background-default;
+        background-color: white;
         display: inline-block;
         padding: styles.$size-spacer;
         margin: styles.$size-spacer;
         border: 1px solid styles.$color-background-accent;
         border-radius: styles.$size-spacer;
-        color: styles.$color-foreground-default;
+        color: styles.$color-font-default;
 
         &:hover {
-          border: 2px solid styles.$color-foreground-default;
+          border-style: solid;
+          border-width: 2px;
           margin: styles.$size-spacer - 1px;
           text-decoration: none;
         }

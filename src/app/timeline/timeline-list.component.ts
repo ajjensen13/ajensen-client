@@ -16,7 +16,6 @@ export class TimelineListComponent implements OnInit, OnDestroy {
 
   renderedProjects: RenderedTimelineProject[];
   projectMappings: [TimelineProject, RenderedTimelineProject][];
-  routeContainerDim: { width: number, height: number };
 
   constructor() {}
 
@@ -25,7 +24,6 @@ export class TimelineListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.renderedProjects = [];
     this.projectMappings = [];
-    this.routeContainerDim = { width: 0, height: 0 };
     this.projectsSub = this.projects
       .subscribe(ps => {
         this.projectMappings = ps.map(p => [p, null]);
@@ -39,9 +37,5 @@ export class TimelineListComponent implements OnInit, OnDestroy {
   onProjectRendered($event: RenderedTimelineProject, p: TimelineProject) {
     this.projectMappings = this.projectMappings.map(rp => rp[0].id === p.id ? [rp[0], $event] : rp);
     this.renderedProjects = this.projectMappings.map(rp => rp[1]).filter(rp => !!rp);
-    this.routeContainerDim = {
-      width: this.routeContainer.nativeElement.offsetWidth,
-      height: this.routeContainer.nativeElement.offsetHeight
-    };
   }
 }

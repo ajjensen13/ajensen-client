@@ -9,6 +9,9 @@ $width: 20px;
 }
 
 svg {
-  width: max-content;
   @extend %height-parent;
+  @extend %dis-block;
+  @extend %ml-auto;
+  @extend %mr-none;
+  //transition: width 0.5s linear;
 }

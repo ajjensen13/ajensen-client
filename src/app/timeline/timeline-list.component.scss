@@ -8,7 +8,6 @@
 div[role="list"] {
   @extend %mv-default;
   @extend %flexible;
-  max-width: 800px;
 
   aj-timeline-project:not(:first-child) {
     @extend %mt-default;

@@ -9,6 +9,8 @@
     <div [innerHTML]="project.contentHtml"></div>
     <small *ngIf="project.parent">Parent: {{ project.parent.id }}</small>
     <footer *ngIf="project.tags">
-        <a *ngFor="let t of project.tags" [href]="t?.hyperlink">{{ t?.title }}</a>
+        <a *ngFor="let t of project.tags" [href]="t?.hyperlink"
+           [style.border-color]="t.color || defaultColor | fadeColor:0.5"
+           [style.background-color]="t.color || defaultColor | fadeColor:0.9" >{{ t?.title }}</a>
     </footer>
 </section>
