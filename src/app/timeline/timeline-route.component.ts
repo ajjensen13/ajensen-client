@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { RenderedProject } from './rendered-project';
+import { RenderedTimelineProject } from './rendered-timeline-project';
 
 @Component({
   selector: 'aj-timeline-route',
@@ -17,7 +17,7 @@ import { RenderedProject } from './rendered-project';
   ]
 })
 export class TimelineRouteComponent implements OnInit, OnChanges {
-  @Input() renderedProjects: RenderedProject[];
+  @Input() renderedProjects: RenderedTimelineProject[];
   @Input() height: number;
   @Input() width: number;
 
@@ -40,14 +40,14 @@ export class TimelineRouteComponent implements OnInit, OnChanges {
     let maxLayer = 1;
     for (const p of this.renderedProjects) {
       const layer = 1; // TODO make this dynamic based on parent projects
-      const top = p.timelineProject.offsetTop;
+      const top = p.projectDimensions.offsetTop;
       // const bottom = p.timelineProject.offsetTop + p.timelineProject.offsetHeight;
-      const topTimeRange = top + p.timeRange.offsetTop;
-      const bottomTimeRange = topTimeRange + p.timeRange.offsetHeight;
+      const topTimeRange = top + p.timeRangeDimensions.offsetTop;
+      const bottomTimeRange = topTimeRange + p.timeRangeDimensions.offsetHeight;
       const middleTimeRange = (bottomTimeRange - topTimeRange) / 2 + topTimeRange;
-      const topContent = top + p.content.offsetTop;
+      const topContent = top + p.contentDimensions.offsetTop;
       // const bottomContent = topContent + p.Content.offsetHeight;
-      const vLength = (topContent - middleTimeRange) + p.content.offsetHeight;
+      const vLength = (topContent - middleTimeRange) + p.contentDimensions.offsetHeight;
       newPaths.push(new DrawnPath({
         path: new PathBuilder({ strokeWidth, stroke: p.project.color })
           .moveAbs(this.width, middleTimeRange - strokeWidth / 2 )
@@ -55,7 +55,7 @@ export class TimelineRouteComponent implements OnInit, OnChanges {
           .verticalLineRel(vLength)
           .path(),
         drawn: false,
-        id: p.id
+        id: p.project.id
       }));
       maxLayer = Math.max(maxLayer, layer);
     }
@@ -96,18 +96,16 @@ export class TimelineRouteComponent implements OnInit, OnChanges {
       return;
     }
 
-    if (start === undefined) {
-      start = -1;
-    }
+    start = start || 0;
 
     this.animating = true;
-    for (let i = (start + 1) % this.paths.length; i !== start; i = (i + 1) % this.paths.length) {
-      if (this.paths[i].drawn) {
-        continue;
+    for (let offset = 0, ndx = start; offset < this.paths.length; offset++, ndx = (ndx + 1) % this.paths.length) {
+      if (!this.paths[ndx].drawn) {
+        setTimeout(() => this.paths[ndx].drawn = true, 0);
+        return;
       }
-      setTimeout(() => this.paths[i].drawn = true, 0);
-      return;
     }
+
     this.animating = false;
   }
 }

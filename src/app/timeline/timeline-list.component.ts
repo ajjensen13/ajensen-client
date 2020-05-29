@@ -2,7 +2,7 @@ import { Component, ElementRef, Input, OnDestroy, OnInit, QueryList, ViewChild, 
 import { Observable, Subscription } from 'rxjs';
 import { TimelineProjectComponent } from './timeline-project.component';
 import { TimelineProject } from '../services/timeline.service';
-import { RenderedProject } from './rendered-project';
+import { RenderedTimelineProject } from './rendered-timeline-project';
 
 @Component({
   selector: 'aj-timeline-list',
@@ -14,8 +14,8 @@ export class TimelineListComponent implements OnInit, OnDestroy {
   @ViewChildren(TimelineProjectComponent, { read: ElementRef }) anchors: QueryList<ElementRef>;
   @ViewChild('routeContainer', { read: ElementRef }) routeContainer: ElementRef;
 
-  renderedProjects: RenderedProject[];
-  projectMappings: [TimelineProject, RenderedProject][];
+  renderedProjects: RenderedTimelineProject[];
+  projectMappings: [TimelineProject, RenderedTimelineProject][];
   routeContainerDim: { width: number, height: number };
 
   constructor() {}
@@ -36,7 +36,7 @@ export class TimelineListComponent implements OnInit, OnDestroy {
     this.projectsSub.unsubscribe();
   }
 
-  onProjectRendered($event: RenderedProject, p: TimelineProject) {
+  onProjectRendered($event: RenderedTimelineProject, p: TimelineProject) {
     this.projectMappings = this.projectMappings.map(rp => rp[0].id === p.id ? [rp[0], $event] : rp);
     this.renderedProjects = this.projectMappings.map(rp => rp[1]).filter(rp => !!rp);
     this.routeContainerDim = {
