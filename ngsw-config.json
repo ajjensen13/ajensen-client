@@ -25,5 +25,19 @@
         ]
       }
     }
+  ],
+  "dataGroups": [
+    {
+      "name": "api",
+      "urls": [
+        "http*://ajensen-server.ajensen.dev/**/*"
+      ],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "timeout": "10s",
+        "maxSize": 16,
+        "maxAge": "14d"
+      }
+    }
   ]
 }
