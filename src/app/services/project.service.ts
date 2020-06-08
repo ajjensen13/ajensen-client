@@ -69,7 +69,17 @@ export class ProjectService {
           tags: ts,
           parent: j.parent,
           color: j.color
-        }))
+        })),
+        map(ts => {
+          ts.startDate.setMinutes(ts.startDate.getMinutes() + ts.startDate.getTimezoneOffset());
+          return ts;
+        }),
+        map(ts => {
+          if (ts.endDate) {
+            ts.endDate.setMinutes(ts.endDate.getMinutes() + ts.endDate.getTimezoneOffset());
+          }
+          return ts;
+        })
       );
   }
 
