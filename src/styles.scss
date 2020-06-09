@@ -1,7 +1,8 @@
+@forward 'scss/helpers';
 @forward 'scss/variables';
-@forward 'scss/directions';
-@forward 'scss/dimensions';
-@forward 'scss/elements';
-@forward 'scss/layout';
 @forward 'scss/theme';
-@forward 'scss/layers';
+
+* {
+  box-sizing: border-box;
+  @extend %s-none;
+}

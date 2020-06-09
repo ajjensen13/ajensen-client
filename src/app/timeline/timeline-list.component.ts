@@ -5,7 +5,7 @@ import { TimelineProject } from '../services/timeline.service';
 import { RenderedTimelineProject } from './rendered-timeline-project';
 
 @Component({
-  selector: 'aj-timeline-list',
+  selector: 'app-timeline-list',
   templateUrl: './timeline-list.component.html',
   styleUrls: ['./timeline-list.component.scss'],
 })

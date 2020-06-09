@@ -3,7 +3,7 @@ import { TimelineProject, TimelineService } from '../services/timeline.service';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'aj-timeline',
+  selector: 'app-timeline',
   templateUrl: './timeline.component.html',
   styleUrls: ['./timeline.component.scss']
 })

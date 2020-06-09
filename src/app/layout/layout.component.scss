@@ -1,15 +1,13 @@
 @use '../../styles';
 
 :host {
-  @extend %dim-viewport;
+  @extend %size-viewport;
 
   $header-height: 50px;
-  $footer-height: 50px;
 
-  aj-header {
-    @extend %pos-fixed;
-    @extend %shadow-y;
-    @extend %layer-chrome;
+  app-header {
+    @extend %position-fixed;
+    @extend %box-shadow-y;
     top: 0;
     right: 0;
     left: 0;
@@ -18,10 +16,11 @@
 
   div {
     @extend %s-none;
-    @extend %pos-fixed;
-    @extend %flex-v;
+    @extend %position-fixed;
+    @extend %flex-container-vertical;
     @extend %align-items-center;
-    overflow-y: scroll;
+    z-index: auto;
+    overflow-y: auto;
     top: $header-height;
     right: 0;
     bottom: 0;
@@ -29,15 +28,40 @@
 
     main {
       @extend %s-default;
-      @extend %flexible;
-      @extend %pos-relative;
+      @extend %flex-item-grow;
+      @extend %position-relative;
+      @extend %width-parent;
     }
 
-    aj-footer {
+    @media (min-width: styles.$breakpoint-phone-landscape) {
+      main {
+        width: styles.$breakpoint-phone-landscape;
+      }
+    }
+
+    @media (min-width: styles.$breakpoint-tablet) {
+      main {
+        width: styles.$breakpoint-tablet;
+      }
+    }
+
+    @media (min-width: styles.$breakpoint-desktop) {
+      main {
+        width: styles.$breakpoint-desktop;
+      }
+    }
+
+    @media (min-width: styles.$breakpoint-desktop-widescreen) {
+      main {
+        width: styles.$breakpoint-desktop-widescreen;
+      }
+    }
+
+    app-footer {
       @extend %s-none;
-      @extend %inflexible;
-      @extend %pos-relative;
-      height: $footer-height;
+      @extend %flex-item-static;
+      @extend %position-relative;
+      @extend %height-min-content;
     }
   }
 }

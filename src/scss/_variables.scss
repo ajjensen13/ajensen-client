@@ -1,32 +1,20 @@
 // colors
-$color-foreground-accent: #ed8733;
-$color-font-default: #000000;
-$color-foreground-default: #476040;
-$color-foreground-muted: #789174;
-$color-content-background: #ffffff;
-$color-background-default: #efeeea;
-$color-background-accent: #d2dac3;
-$color-shadow: #65808080;
-//$color-error: #b55139;
+$color-foreground-accent: #ed8733 !default;
+$color-foreground-default: #476040 !default;
+$color-foreground-muted: #585858 !default;
+$color-semantic-primary-action: $color-foreground-accent !default;
+$color-semantic-passive-action: $color-foreground-muted !default;
+$color-font-default: #000000 !default;
+$color-font-accent: $color-foreground-default !default;
+$color-font-muted: $color-foreground-muted !default;
+$color-content-background: #ffffff !default;
+$color-background-default: #efeeea !default;
+$color-background-accent: #d2dac3 !default;
+$color-shadow: #65808080 !default;
 
-// Dimensions
-$size-root: 16px;
-$size-spacer: 4px;
-$sizes: none tight default cozy;
-$size-factors: (none: 0, tight: 0.5, default: 1, cozy: 1.5);
-$font-size-factors: (1: 2, 2: 1.5, 3: 1.25, 4: 1, 5: 1, 6: 1);
+$size-root: 16px !default;
 
-// Shadows
-$shadow-x: $size-spacer;
-$shadow-y: $size-spacer;
-$shadow-blur: $size-spacer / 2;
-$shadow-color: $color-shadow;
-$shadow: $shadow-x $shadow-y $shadow-blur $shadow-color;
-
-// Breakpoints
-$bp-default: 0px;
-$bp-phone: 576px;
-$bp-tablet: 768px;
-$bp-desktop: 992px;
-$bp-widescreen: 1200px;
-$minimum-screen-width: 450px;
+// weights
+$font-weight-bold: 600 !default;
+$font-weight-normal: 400 !default;
+$font-weight-light: 300 !default;

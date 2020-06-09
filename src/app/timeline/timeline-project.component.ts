@@ -20,7 +20,7 @@ import { async } from 'rxjs/internal/scheduler/async';
 import { ThemeService } from '../services/theme.service';
 
 @Component({
-  selector: 'aj-timeline-project',
+  selector: 'app-timeline-project',
   templateUrl: './timeline-project.component.html',
   styleUrls: ['./timeline-project.component.scss']
 })

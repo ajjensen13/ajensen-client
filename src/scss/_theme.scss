@@ -1,22 +1,40 @@
 @use 'variables' as v;
-@use 'dimensions' as d;
+@use 'helpers';
 
 :root {
   font-size: v.$size-root;
   font-family: 'Roboto', sans-serif;
-  font-weight: 300;
+  font-weight: v.$font-weight-normal;
 
-  h1, h2, b, strong {
+  h2, b, strong {
     color: v.$color-foreground-default;
-    font-weight: 400;
+    font-weight: v.$font-weight-bold;
   }
 
   h1, h2 {
-    @extend %pt-tight;
+    @extend %pt-default;
+    @extend %mb-tight;
   }
 
+  h3 {
+    font-weight: v.$font-weight-bold;
+  }
+
+  h1, h2, h4, h5, h6 {
+    font-weight: v.$font-weight-normal;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 1.33rem;
+  }
+  h3 {
+    font-size: 1.25rem;
+  }
   h3, h4, h5, h6 {
-    font-weight: 300;
+    font-size: 1rem;
   }
 }
 
@@ -27,9 +45,8 @@ body {
 
 a {
   text-decoration: none;
-  color: v.$color-foreground-accent;
-  //color: darken(v.$color-foreground-accent, 10%);
-  font-weight: 400;
+  color: v.$color-semantic-passive-action;
+  font-weight: v.$font-weight-bold;
 
   &:hover {
     text-decoration: underline;

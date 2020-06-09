@@ -3,7 +3,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { RenderedTimelineProject } from './rendered-timeline-project';
 
 @Component({
-  selector: 'aj-timeline-route',
+  selector: 'app-timeline-route',
   templateUrl: './timeline-route.component.html',
   styleUrls: ['./timeline-route.component.scss'],
   animations: [
@@ -18,7 +18,12 @@ import { RenderedTimelineProject } from './rendered-timeline-project';
 })
 export class TimelineRouteComponent implements OnInit, OnChanges {
 
-  constructor() {  }
+  constructor() {
+    this.strokeWidth = 4;
+    this.layerWidth = this.strokeWidth * 8;
+    this.widthPx = TimelineRouteComponent.calculateWidth(1, this.layerWidth);
+  }
+
   @Input() renderedProjects: RenderedTimelineProject[];
   viewBox: string;
 
@@ -35,9 +40,6 @@ export class TimelineRouteComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.strokeWidth = 2;
-    this.layerWidth = this.strokeWidth * 8;
-    this.widthPx = TimelineRouteComponent.calculateWidth(1, this.layerWidth);
   }
 
   trackByPath(index: number, path: DrawnPath): string {
@@ -58,11 +60,13 @@ export class TimelineRouteComponent implements OnInit, OnChanges {
       // const bottomContent = topContent + p.Content.offsetHeight;
       const vLength = (topContent - middleTimeRange) + p.contentDimensions.offsetHeight;
       newPaths.push(new DrawnPath({
-        path: new PathBuilder({ strokeWidth: this.strokeWidth, stroke: p.project.color })
-          .moveAbs(this.layerWidth, middleTimeRange - this.strokeWidth / 2 )
-          .horizontalLineRel((-layer * this.layerWidth) + this.strokeWidth)
-          .verticalLineRel(vLength)
-          .path(),
+        paths: [
+          new PathBuilder({ strokeWidth: this.strokeWidth, stroke: p.project.color })
+            .moveAbs(this.layerWidth, middleTimeRange - this.strokeWidth / 2 )
+            .horizontalLineRel((-layer * this.layerWidth) + this.strokeWidth)
+            .verticalLineRel(vLength)
+            .path()
+        ],
         drawn: false,
         id: p.project.id
       }));
@@ -182,7 +186,7 @@ class PathBuilder {
 }
 
 class DrawnPath {
-  path: Path;
+  paths: Path[];
   id: string;
   drawn: boolean;
 

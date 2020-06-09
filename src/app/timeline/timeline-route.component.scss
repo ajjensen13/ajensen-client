@@ -4,14 +4,13 @@ $width: 20px;
 
 :host {
   @extend %s-none;
-  @extend %dis-block;
-  @extend %dim-parent;
+  @extend %display-block;
+  @extend %size-parent;
 }
 
 svg {
   @extend %height-parent;
-  @extend %dis-block;
+  @extend %display-block;
   @extend %ml-auto;
   @extend %mr-none;
-  //transition: width 0.5s linear;
 }

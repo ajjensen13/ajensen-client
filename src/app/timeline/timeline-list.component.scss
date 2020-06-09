@@ -1,23 +1,16 @@
 @use '../../styles';
 
 :host {
-  @extend %flex-h;
-  @extend %pos-relative;
+  @extend %flex-container-horizontal;
+  @extend %position-relative;
 }
 
 div[role="list"] {
   @extend %mv-default;
-  @extend %flexible;
-
-  aj-timeline-project:not(:first-child) {
-    @extend %mt-default;
-  }
-  aj-timeline-project:not(:last-child) {
-    @extend %mb-default;
-  }
+  @extend %flex-item-dynamic;
 }
 
 div[role="img"] {
-  @extend %inflexible;
-  width: max-content;
+  @extend %flex-item-static;
+  @extend %width-max-content;
 }

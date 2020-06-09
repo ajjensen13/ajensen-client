@@ -1,11 +1,11 @@
 <div role="img" #routeContainer>
-  <aj-timeline-route
+  <app-timeline-route
     [renderedProjects]="renderedProjects"
-  ></aj-timeline-route>
+  ></app-timeline-route>
 </div>
 <div role="list">
-  <aj-timeline-project
+  <app-timeline-project
     *ngFor="let p of projects | async"
     [project]="p" role="listitem"
-    (render)="onProjectRendered($event, p)"></aj-timeline-project>
+    (render)="onProjectRendered($event, p)"></app-timeline-project>
 </div>

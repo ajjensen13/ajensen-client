@@ -1,24 +1,24 @@
 @use '../../styles';
 
 :host {
-  @extend %dis-block;
-  @extend %pos-relative;
+  @extend %display-block;
+  @extend %position-relative;
 
   &:not(:first-child) {
-    @extend %mt-default;
+    @extend %mt-loose;
   }
 
   &:not(:last-child) {
-    @extend %mb-default;
+    @extend %mb-loose;
   }
 
   .time-range {
-    @extend %flex-h;
+    @extend %flex-container-horizontal;
     @extend %justify-content-flex-start;
-    @extend %pos-relative;
+    @extend %position-relative;
     @extend %p-tight;
     font-style: italic;
-    color: styles.$color-foreground-muted;
+    color: styles.$color-font-muted;
 
     > * {
       @extend %ph-tight;
@@ -26,29 +26,24 @@
   }
 
   section {
-    @extend %pt-default;
-    @extend %pb-tight;
-    @extend %ph-default;
-    @extend %pos-relative;
+    @extend %p-loose;
+    @extend %position-relative;
     background: styles.$color-content-background;
-    border-radius: styles.$size-spacer;
+    border-radius: styles.$spacing-default;
     box-shadow: styles.$shadow;
 
     header {
-      font-size: map_get(styles.$font-size-factors, 2) * styles.$size-root;
+      font-size: 2 * styles.$size-root;
       @extend %sb-tight;
       border-bottom: 1px solid styles.$color-background-default;
     }
 
     ::ng-deep {
       h1 {
-        font-size: map_get(styles.$font-size-factors, 3) * styles.$size-root
+        font-size: 1.5 * styles.$size-root
       }
-      h2 {
-        font-size: map_get(styles.$font-size-factors, 4) * styles.$size-root
-      }
-      h3 {
-        font-size: map_get(styles.$font-size-factors, 5) * styles.$size-root
+      h2, h3 {
+        font-size: 1.0 * styles.$size-root
       }
       ol, ul {
         padding-left: styles.$size-root * 2;
@@ -59,30 +54,35 @@
     }
 
     footer {
-      border-top: 1px dotted styles.$color-background-default;
-      font-size: x-small;
-      font-weight: 400;
-      @extend %mt-cozy;
+      @extend %border-width-thin;
+      @extend %border-style-dotted;
+      border-color: styles.$color-background-default;
+      @extend %mt-loose;
       @extend %pt-tight;
-      @extend %flex-h;
-      @extend %flex-wrap;
+      @extend %flex-container-horizontal;
       @extend %justify-content-center;
       flex-wrap: wrap;
 
+      $border-radius: 4px;
+
       > a {
-        @extend %inflexible;
+        font-size: small;
+        font-weight: styles.$font-weight-normal;
+        @extend %flex-item-static;
         background-color: white;
+        //@extend %display-inline-block;
         display: inline-block;
-        padding: styles.$size-spacer;
-        margin: styles.$size-spacer;
-        border: 1px solid styles.$color-background-accent;
-        border-radius: styles.$size-spacer;
+        @extend %s-tight;
+        @extend %border-width-thin;
+        @extend %border-style-solid;
+        border-color: styles.$color-background-accent;
+        border-radius: $border-radius;
         color: styles.$color-font-default;
 
         &:hover {
-          border-style: solid;
+          @extend %border-style-solid;
           border-width: 2px;
-          margin: styles.$size-spacer - 1px;
+          margin: $border-radius - 1px;
           text-decoration: none;
         }
       }

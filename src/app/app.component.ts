@@ -3,7 +3,7 @@ import { RelativeDimensions } from './timeline/relative-dimensions';
 import { WindowResizeService } from './services/window-resize.service';
 
 @Component({
-  selector: 'aj-root',
+  selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
