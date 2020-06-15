@@ -71,14 +71,16 @@ spec:
           sources:
           - downwardAPI:
               items:
-                - path: pod_name
-                  fieldRef:
-                    fieldPath: metadata.name
-                - path: pod_namespace
-                  fieldRef:
-                    fieldPath: metadata.namespace
-                - path: pod_labels
-                  fieldRef:
-                    fieldPath: metadata.labels
+              - path: pod_name
+                fieldRef:
+                  fieldPath: metadata.name
+              - path: pod_namespace
+                fieldRef:
+                  fieldPath: metadata.namespace
+              - path: pod_labels
+                fieldRef:
+                  fieldPath: metadata.labels
           - configMap:
               name: k8-cluster-info-cm
+          - configMap:
+              name: {{ .Chart.Name }}-container-name-cm
