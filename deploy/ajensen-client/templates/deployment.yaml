@@ -67,14 +67,18 @@ spec:
       {{- end }}
       volumes:
       - name: k8info
-        downwardAPI:
-          items:
-          - path: pod_name
-            fieldRef:
-              fieldPath: metadata.name
-          - path: pod_namespace
-            fieldRef:
-              fieldPath: metadata.namespace
-          - path: pod_labels
-            fieldRef:
-              fieldPath: metadata.labels
+        projected:
+          sources:
+          - downwardAPI:
+              items:
+                - path: pod_name
+                  fieldRef:
+                    fieldPath: metadata.name
+                - path: pod_namespace
+                  fieldRef:
+                    fieldPath: metadata.namespace
+                - path: pod_labels
+                  fieldRef:
+                    fieldPath: metadata.labels
+          - configMap:
+              name: k8-cluster-info-cm
