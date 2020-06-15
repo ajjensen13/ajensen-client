@@ -69,9 +69,6 @@ spec:
       - name: k8info
         downwardAPI:
           items:
-          - path: node_name
-            fieldRef:
-              fieldPath: spec.nodeName
           - path: pod_name
             fieldRef:
               fieldPath: metadata.name
