@@ -66,22 +66,18 @@ spec:
       {{- toYaml . | nindent 8 }}
       {{- end }}
       volumes:
-        - name: k8info
-          downwardAPI:
-            items:
-              - path: node_name
-                valueFrom:
-                  fieldRef:
-                    fieldPath: spec.nodeName
-              - name: pod_name
-                valueFrom:
-                  fieldRef:
-                    fieldPath: metadata.name
-              - name: pod_namespace
-                valueFrom:
-                  fieldRef:
-                    fieldPath: metadata.namespace
-              - name: pod_labels
-                valueFrom:
-                  fieldRef:
-                    fieldPath: metadata.labels
+      - name: k8info
+        downwardAPI:
+          items:
+          - path: node_name
+            fieldRef:
+              fieldPath: spec.nodeName
+          - path: pod_name
+            fieldRef:
+              fieldPath: metadata.name
+          - path: pod_namespace
+            fieldRef:
+              fieldPath: metadata.namespace
+          - path: pod_labels
+            fieldRef:
+              fieldPath: metadata.labels
