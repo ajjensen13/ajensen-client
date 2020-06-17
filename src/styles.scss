@@ -1,5 +1,8 @@
-@forward 'scss/helpers';
 @forward 'scss/variables';
+@forward 'scss/helpers' with (
+  $shadow-x: 4px,
+  $shadow-y: 4px
+);
 @forward 'scss/theme';
 
 * {
