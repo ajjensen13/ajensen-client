@@ -54,9 +54,9 @@
     }
 
     footer {
-      @extend %border-width-thin;
-      @extend %border-style-dotted;
-      border-color: styles.$color-background-default;
+      @extend %border-top-width-thin;
+      @extend %border-top-style-dotted;
+      border-top-color: styles.$color-background-default;
       @extend %mt-loose;
       @extend %pt-tight;
       @extend %flex-container-horizontal;
