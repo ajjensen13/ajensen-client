@@ -1,8 +1,8 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { TimelineProjectComponent } from './timeline-project.component';
-import { TimelineProject } from '../services/timeline.service';
-import { RenderedTimelineProject } from './rendered-timeline-project';
+import { TimelineProjectComponent } from '../project/timeline-project.component';
+import { TimelineProject } from '../../services/timeline.service';
+import { RenderedTimelineProject } from '../models/rendered-timeline-project';
 
 @Component({
   selector: 'app-timeline-list',

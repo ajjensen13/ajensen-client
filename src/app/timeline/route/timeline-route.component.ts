@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { RenderedTimelineProject } from './rendered-timeline-project';
+import { RenderedTimelineProject } from '../models/rendered-timeline-project';
 
 @Component({
   selector: 'app-timeline-route',
@@ -51,18 +51,16 @@ export class TimelineRouteComponent implements OnInit, OnChanges {
     let maxY = 0;
     for (const p of this.renderedProjects) {
       const layer = 1; // TODO make this dynamic based on parent projects
-      const top = p.projectDimensions.offsetTop;
-      const bottom = p.projectDimensions.offsetTop + p.projectDimensions.offsetHeight;
-      const topTimeRange = top + p.timeRangeDimensions.offsetTop;
-      const bottomTimeRange = topTimeRange + p.timeRangeDimensions.offsetHeight;
-      const middleTimeRange = (bottomTimeRange - topTimeRange) / 2 + topTimeRange;
-      const topContent = top + p.contentDimensions.offsetTop;
-      // const bottomContent = topContent + p.Content.offsetHeight;
-      const vLength = (topContent - middleTimeRange) + p.contentDimensions.offsetHeight;
+      const top = p.dimensions.offsetTop;
+      const bottom = p.dimensions.offsetTop + p.dimensions.offsetHeight;
+      const topOfAnchor = top + p.headerDimensions.offsetTop;
+      const bottomOfAnchor = topOfAnchor + p.headerDimensions.offsetHeight;
+      const middleOfAnchor = (bottomOfAnchor - topOfAnchor) / 2 + topOfAnchor;
+      const vLength = bottom - middleOfAnchor;
       newPaths.push(new DrawnPath({
         paths: [
           new PathBuilder({ strokeWidth: this.strokeWidth, stroke: p.project.color })
-            .moveAbs(this.layerWidth, middleTimeRange - this.strokeWidth / 2 )
+            .moveAbs(this.layerWidth, middleOfAnchor - this.strokeWidth / 2 )
             .horizontalLineRel((-layer * this.layerWidth) + this.strokeWidth)
             .verticalLineRel(vLength)
             .path()

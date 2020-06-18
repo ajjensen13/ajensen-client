@@ -10,14 +10,14 @@ import {
   Output,
   ViewChild
 } from '@angular/core';
-import { TimelineProject } from '../services/timeline.service';
-import { RenderedTimelineProject } from './rendered-timeline-project';
-import { RelativeDimensions } from './relative-dimensions';
-import { WindowResizeService } from '../services/window-resize.service';
+import { TimelineProject } from '../../services/timeline.service';
+import { RenderedTimelineProject } from '../models/rendered-timeline-project';
+import { RelativeDimensions } from '../models/relative-dimensions';
+import { WindowResizeService } from '../../services/window-resize.service';
 import { Subject, Subscription } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
 import { async } from 'rxjs/internal/scheduler/async';
-import { ThemeService } from '../services/theme.service';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-timeline-project',
@@ -27,8 +27,9 @@ import { ThemeService } from '../services/theme.service';
 export class TimelineProjectComponent implements OnInit, OnDestroy, AfterViewChecked, AfterViewInit {
   @Input() project: TimelineProject;
   @Output() render = new EventEmitter<RenderedTimelineProject>();
-  @ViewChild('timeRange', { read: ElementRef }) timeRange: ElementRef;
-  @ViewChild('content', { read: ElementRef }) content: ElementRef;
+  @ViewChild('header', { read: ElementRef }) headerElementRef: ElementRef;
+  @ViewChild('section', { read: ElementRef }) sectionElementRef: ElementRef;
+  @ViewChild('footer', { read: ElementRef }) footerElementRef: ElementRef;
   today: Date;
   defaultColor: string;
 
@@ -38,7 +39,7 @@ export class TimelineProjectComponent implements OnInit, OnDestroy, AfterViewChe
   private emissionSubject: Subject<RenderedTimelineProject>;
   private emissionSubscription: Subscription;
 
-  constructor(private el: ElementRef, private windowResizeService: WindowResizeService, private themeService: ThemeService) { }
+  constructor(private hostElementRef: ElementRef, private windowResizeService: WindowResizeService, private themeService: ThemeService) { }
 
   ngOnInit(): void {
     this.today = new Date();
@@ -73,14 +74,12 @@ export class TimelineProjectComponent implements OnInit, OnDestroy, AfterViewChe
     // It takes the browser some time to finish positioning these elements
     // Keep the dirty flag as true until the dimensions stop changing.
     setTimeout(() => {
-      const projectElement = this.el.nativeElement as HTMLElement;
-      const timeRangeElement = this.timeRange.nativeElement as HTMLElement;
-      const contentElement = this.content.nativeElement as HTMLElement;
+      const hostElement = this.hostElementRef.nativeElement as HTMLElement;
+      const anchorElement = this.headerElementRef.nativeElement as HTMLElement;
       const nextRenderedProject = new RenderedTimelineProject({
         project: this.project,
-        projectDimensions: RelativeDimensions.fromHTMLElement(projectElement),
-        timeRangeDimensions: RelativeDimensions.fromHTMLElement(timeRangeElement),
-        contentDimensions: RelativeDimensions.fromHTMLElement(contentElement)
+        dimensions: RelativeDimensions.fromHTMLElement(hostElement),
+        headerDimensions: RelativeDimensions.fromHTMLElement(anchorElement)
       });
 
       if (nextRenderedProject.hasFiniteDimensions()) {

@@ -1,0 +1,17 @@
+<header class="anchor" #header>
+  <div>{{ project.summary }}</div>
+<!--  <time [dateTime]="project.startDate.toISOString()">{{ project.startDate | date:'MMMM yyyy' }}</time>-->
+<!--  <span>—</span>-->
+<!--  <time *ngIf="project.endDate" [dateTime]="project.endDate.toISOString()">{{ project.endDate | date:'MMMM yyyy'  }}</time>-->
+<!--  <time *ngIf="!project.endDate" [dateTime]="today.toISOString()" class="time-range-present">Present</time>-->
+</header>
+<section [style.border-left-color]="project.color" #section>
+    <header><h1>{{ project.title }}</h1></header>
+    <div [innerHTML]="project.contentHtml"></div>
+    <small *ngIf="project.parent">Parent: {{ project.parent.id }}</small>
+</section>
+<footer *ngIf="project.tags" #footer>
+  <a *ngFor="let t of project.tags" [href]="t?.hyperlink"
+     [style.border-color]="t.color || defaultColor | fadeColor:0.5"
+     [style.background-color]="t.color || defaultColor | fadeColor:0.9" >{{ t?.title }}</a>
+</footer>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RelativeDimensions } from '../timeline/relative-dimensions';
+import { RelativeDimensions } from '../timeline/models/relative-dimensions';
 import { Observable, Subject } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
 import { async } from 'rxjs/internal/scheduler/async';

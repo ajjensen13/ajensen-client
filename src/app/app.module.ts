@@ -11,12 +11,12 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TimelineProjectComponent } from './timeline/timeline-project.component';
-import { TimelineListComponent } from './timeline/timeline-list.component';
+import { TimelineProjectComponent } from './timeline/project/timeline-project.component';
+import { TimelineListComponent } from './timeline/list/timeline-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { TimelineRouteComponent } from './timeline/timeline-route.component';
-import { LightenColorPipePipe } from './timeline/lighten-color.pipe';
-import { FadeColorPipe } from './timeline/fade-color.pipe';
+import { TimelineRouteComponent } from './timeline/route/timeline-route.component';
+import { LightenColorPipePipe } from './timeline/pipes/lighten-color.pipe';
+import { FadeColorPipe } from './timeline/pipes/fade-color.pipe';
 
 @NgModule({
   declarations: [

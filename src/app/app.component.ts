@@ -1,5 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { RelativeDimensions } from './timeline/relative-dimensions';
+import { RelativeDimensions } from './timeline/models/relative-dimensions';
 import { WindowResizeService } from './services/window-resize.service';
 
 @Component({
