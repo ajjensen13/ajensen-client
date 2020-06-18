@@ -8,6 +8,7 @@ import { concatMap, map, mergeAll, mergeMap, shareReplay, toArray } from 'rxjs/o
 export class Project {
     id: string;
     title: string;
+    summary: string;
     contentHtml: string;
     startDate: Date;
     endDate?: Date;
@@ -63,6 +64,7 @@ export class ProjectService {
         map(ts => new Project({
           id: j.id,
           title: j.title,
+          summary: j.summary,
           contentHtml: j.contentHtml,
           startDate: new Date(j.startDate),
           endDate: j.endDate ? new Date(j.endDate) : undefined,
@@ -96,6 +98,7 @@ export class ProjectService {
 class JsonProject {
   id: string;
   title: string;
+  summary: string;
   contentHtml: string;
   startDate: string;
   tags?: string[];

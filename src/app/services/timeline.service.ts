@@ -7,6 +7,7 @@ import { Tag } from './tag.service';
 export class TimelineProject {
   id: string;
   title: string;
+  summary: string;
   contentHtml: string;
   startDate: Date;
   endDate?: Date;
