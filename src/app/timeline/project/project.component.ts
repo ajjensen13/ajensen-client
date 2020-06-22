@@ -21,10 +21,10 @@ import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-timeline-project',
-  templateUrl: './timeline-project.component.html',
-  styleUrls: ['./timeline-project.component.scss']
+  templateUrl: './project.component.html',
+  styleUrls: ['./project.component.scss'],
 })
-export class TimelineProjectComponent implements OnInit, OnDestroy, AfterViewChecked, AfterViewInit {
+export class ProjectComponent implements OnInit, OnDestroy, AfterViewChecked, AfterViewInit {
   @Input() project: TimelineProject;
   @Output() render = new EventEmitter<RenderedTimelineProject>();
   @ViewChild('header', { read: ElementRef }) headerElementRef: ElementRef;
@@ -39,7 +39,11 @@ export class TimelineProjectComponent implements OnInit, OnDestroy, AfterViewChe
   private emissionSubject: Subject<RenderedTimelineProject>;
   private emissionSubscription: Subscription;
 
-  constructor(private hostElementRef: ElementRef, private windowResizeService: WindowResizeService, private themeService: ThemeService) { }
+  constructor(
+    private hostElementRef: ElementRef,
+    private windowResizeService: WindowResizeService,
+    private themeService: ThemeService
+  ) { }
 
   ngOnInit(): void {
     this.today = new Date();

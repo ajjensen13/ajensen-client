@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { TimelineProject, TimelineService } from '../services/timeline.service';
 import { Observable, Subscription } from 'rxjs';
-import { TimelineProjectComponent } from './project/timeline-project.component';
+import { ProjectComponent } from './project/project.component';
 import { RenderedTimelineProject } from './models/rendered-timeline-project';
 
 @Component({
@@ -10,7 +10,7 @@ import { RenderedTimelineProject } from './models/rendered-timeline-project';
   styleUrls: ['./timeline.component.scss']
 })
 export class TimelineComponent implements OnInit, OnDestroy {
-  @ViewChildren(TimelineProjectComponent, { read: ElementRef }) anchors: QueryList<ElementRef>;
+  @ViewChildren(ProjectComponent, { read: ElementRef }) anchors: QueryList<ElementRef>;
   @ViewChild('routeContainer', { read: ElementRef }) routeContainer: ElementRef;
 
   renderedProjects: RenderedTimelineProject[];

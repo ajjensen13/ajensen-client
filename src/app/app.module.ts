@@ -8,24 +8,17 @@ import { environment } from '../environments/environment';
 import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
-import { TimelineComponent } from './timeline/timeline.component';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TimelineProjectComponent } from './timeline/project/timeline-project.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LightenColorPipePipe } from './timeline/pipes/lighten-color.pipe';
-import { FadeColorPipe } from './timeline/pipes/fade-color.pipe';
+import { TimelineModule } from './timeline/timeline.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
     HeaderComponent,
-    FooterComponent,
-    TimelineComponent,
-    TimelineProjectComponent,
-    LightenColorPipePipe,
-    FadeColorPipe
+    FooterComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
@@ -33,9 +26,9 @@ import { FadeColorPipe } from './timeline/pipes/fade-color.pipe';
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     RouterModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    TimelineModule,
   ],
-  providers: [],
   exports: [
     LayoutComponent
   ],
