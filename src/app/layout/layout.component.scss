@@ -1,13 +1,13 @@
 @use '../../styles';
 
 :host {
-  @extend %size-viewport;
+  height: 100vh;
+  width: 100vw;
 
   $header-height: 50px;
 
   app-header {
-    @extend %position-fixed;
-    @extend %box-shadow-y;
+    position: fixed;
     top: 0;
     right: 0;
     left: 0;
@@ -15,10 +15,12 @@
   }
 
   div {
-    @extend %s-none;
-    @extend %position-fixed;
-    @extend %flex-container-vertical;
-    @extend %align-items-center;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     z-index: auto;
     overflow-y: auto;
     top: $header-height;
@@ -27,41 +29,19 @@
     left: 0;
 
     main {
-      @extend %s-default;
-      @extend %flex-item-grow;
-      @extend %position-relative;
-      @extend %width-parent;
-    }
-
-    @media (min-width: styles.$breakpoint-phone-landscape) {
-      main {
-        width: styles.$breakpoint-phone-landscape;
-      }
-    }
-
-    @media (min-width: styles.$breakpoint-tablet) {
-      main {
-        width: styles.$breakpoint-tablet;
-      }
-    }
-
-    @media (min-width: styles.$breakpoint-desktop) {
-      main {
-        width: styles.$breakpoint-desktop;
-      }
-    }
-
-    @media (min-width: styles.$breakpoint-desktop-widescreen) {
-      main {
-        width: styles.$breakpoint-desktop-widescreen;
-      }
+      padding: styles.$spacer;
+      margin: styles.$spacer;
+      flex: 1;
+      position: relative;
+      width: 100%;
     }
 
     app-footer {
-      @extend %s-none;
-      @extend %flex-item-static;
-      @extend %position-relative;
-      @extend %height-min-content;
+      margin: 0;
+      padding: 0;
+      flex: none;
+      position: relative;
+      height: min-content;
     }
   }
 }

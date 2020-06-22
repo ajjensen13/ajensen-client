@@ -1,8 +1,39 @@
-@forward 'scss/helpers';
-@forward 'scss/variables';
-@forward 'scss/theme';
+// See https://getbootstrap.com/docs/4.5/getting-started/theming/#importing
 
-* {
-  box-sizing: border-box;
-  @extend %s-none;
+// Required
+@import "../node_modules/bootstrap/scss/bootstrap-grid";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+// BEGIN Customizations
+$primary: #ed8733;
+$secondary: #585858;
+
+$theme-colors: (
+  "primary": #476040,
+  "secondary": #d2dac3,
+);
+
+a {
+  color: map_get($theme-colors, "primary");
 }
+
+//$color-foreground-accent: #ed8733 !default;
+//$color-foreground-default: #476040 !default;
+//$color-foreground-muted: #585858 !default;
+//$color-semantic-primary-action: $color-foreground-accent !default;
+//$color-semantic-passive-action: $color-foreground-muted !default;
+//$color-font-default: #000000 !default;
+//$color-font-accent: $color-foreground-default !default;
+//$color-font-muted: $color-foreground-muted !default;
+//$color-content-background: #ffffff !default;
+//$color-background-default: #efeeea !default;
+//$color-background-accent: #d2dac3 !default;
+//$color-shadow: #65808080 !default;
+// END   Customizations
+
+// Optional
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+@import "../node_modules/bootstrap/scss/grid";
+

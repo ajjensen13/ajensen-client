@@ -12,9 +12,7 @@ import { TimelineComponent } from './timeline/timeline.component';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TimelineProjectComponent } from './timeline/project/timeline-project.component';
-import { TimelineListComponent } from './timeline/list/timeline-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { TimelineRouteComponent } from './timeline/route/timeline-route.component';
 import { LightenColorPipePipe } from './timeline/pipes/lighten-color.pipe';
 import { FadeColorPipe } from './timeline/pipes/fade-color.pipe';
 
@@ -26,8 +24,6 @@ import { FadeColorPipe } from './timeline/pipes/fade-color.pipe';
     FooterComponent,
     TimelineComponent,
     TimelineProjectComponent,
-    TimelineListComponent,
-    TimelineRouteComponent,
     LightenColorPipePipe,
     FadeColorPipe
   ],

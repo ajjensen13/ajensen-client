@@ -1,12 +1,14 @@
 @use '../../../styles';
 
 :host {
-  @extend %size-parent;
-  background-color: darken(styles.$color-background-default, 5%);
+  width: 100%;
+  height: 100%;
+  background-color: styles.$gray-100;
 }
 
 footer {
-  @extend %pv-default;
-  @extend %flex-container-horizontal;
-  @extend %justify-content-center;
+  padding: styles.$spacer 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

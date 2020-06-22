@@ -2,5 +2,6 @@
 
 :host {
   display: block;
-  @extend %size-viewport;
+  height: 100vh;
+  width: 100vh;
 }

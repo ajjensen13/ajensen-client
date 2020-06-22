@@ -1,75 +1,66 @@
 @use '../../../styles';
 
 :host {
-  @extend %display-block;
-  @extend %position-relative;
+  display: block;
+  position: relative;
 
   &:not(:first-child) {
-    @extend %mt-loose;
+    margin-top: map_get(styles.$spacers, 5);
   }
 
   &:not(:last-child) {
-    @extend %mb-loose;
+    margin-bottom: map_get(styles.$spacers, 5);
   }
 }
 
 .anchor {
-  @extend %flex-container-horizontal;
-  @extend %justify-content-flex-start;
-  @extend %position-relative;
-  @extend %p-tight;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  padding: map_get(styles.$spacers, 1);
   font-style: italic;
-  color: styles.$color-font-muted;
 
   > * {
-    @extend %ph-tight;
+    padding: map_get(styles.$spacers, 1) 0;
   }
 }
 
 section {
-  @extend %p-loose;
-  @extend %position-relative;
-  background: styles.$color-content-background;
-  border-radius: styles.$spacing-default;
-  box-shadow: styles.$shadow;
+  padding: map_get(styles.$spacers, 5);
+  position: relative;
 
   header {
-    font-size: 2 * styles.$size-root;
-    @extend %sb-tight;
-    border-bottom: 1px solid styles.$color-background-default;
+    margin-bottom: map_get(styles.$spacers, 1);
+    padding-bottom: map_get(styles.$spacers, 1);
+    border-bottom: 1px solid styles.$gray-100;
   }
 }
 
 footer {
-  @extend %border-top-width-thin;
-  @extend %border-top-style-dotted;
-  border-color: styles.$color-background-default;
-  @extend %mt-loose;
-  @extend %pt-tight;
-  @extend %flex-container-horizontal;
-  @extend %justify-content-center;
+  border-top: thin dotted styles.$gray-100;
+  margin-top: map_get(styles.$spacers, 5);
+  padding-top: map_get(styles.$spacers, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   flex-wrap: wrap;
 
-  $border-radius: 4px;
-
+  $border-width: 1px;
   > a {
     font-size: small;
     font-weight: styles.$font-weight-normal;
-    @extend %flex-item-static;
-    background-color: white;
-    //@extend %display-inline-block;
+    flex: none;
+    background-color: styles.$white;
     display: inline-block;
-    @extend %s-tight;
-    @extend %border-width-thin;
-    @extend %border-style-solid;
-    border-color: styles.$color-background-accent;
-    border-radius: $border-radius;
-    color: styles.$color-font-default;
+    padding: map_get(styles.$spacers, 1);
+    margin: map_get(styles.$spacers, 1);
+    border: $border-width solid styles.$gray-200;
 
+    $border-width: 2px;
     &:hover {
-      @extend %border-style-solid;
-      border-width: 2px;
-      margin: $border-radius - 1px;
+      border-width: $border-width;
+      margin: $border-width - ($border-width / 2);
       text-decoration: none;
     }
   }

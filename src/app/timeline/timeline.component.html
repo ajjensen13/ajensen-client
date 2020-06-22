@@ -1,1 +1,8 @@
-<app-timeline-list [projects]="timeline"></app-timeline-list>
+<div role="list">
+  <app-timeline-project
+    *ngFor="let p of timeline | async"
+    role="listitem"
+    [project]="p"
+    (render)="onProjectRendered($event, p)"
+  ></app-timeline-project>
+</div>
