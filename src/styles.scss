@@ -1,11 +1,4 @@
-// See https://getbootstrap.com/docs/4.5/getting-started/theming/#importing
-
-// Required
-@import "../node_modules/bootstrap/scss/bootstrap-grid";
-@import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/mixins";
-
-// BEGIN Customizations
+// Bootstrap (customizations)
 $primary: #ed8733;
 $secondary: #585858;
 
@@ -14,9 +7,7 @@ $theme-colors: (
   "secondary": #d2dac3,
 );
 
-a {
-  color: map_get($theme-colors, "primary");
-}
+$link-color: map_get($theme-colors, "primary");
 
 //$color-foreground-accent: #ed8733 !default;
 //$color-foreground-default: #476040 !default;
@@ -30,10 +21,12 @@ a {
 //$color-background-default: #efeeea !default;
 //$color-background-accent: #d2dac3 !default;
 //$color-shadow: #65808080 !default;
-// END   Customizations
 
-// Optional
-@import "../node_modules/bootstrap/scss/reboot";
-@import "../node_modules/bootstrap/scss/type";
-@import "../node_modules/bootstrap/scss/grid";
+// Bootstrap (required)
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
 
+// Bootstrap (optional)
+@import "node_modules/bootstrap/scss/reboot";
+@import "node_modules/bootstrap/scss/grid";

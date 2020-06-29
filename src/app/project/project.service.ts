@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Tag, TagService } from './tag.service';
+import { Tag, TagService } from '../tag/tag.service';
 import { HttpClient } from '@angular/common/http';
 import { from, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { concatMap, map, mergeAll, mergeMap, shareReplay, toArray } from 'rxjs/operators';
+import { concatMap, filter, map, mergeAll, mergeMap, shareReplay, toArray } from 'rxjs/operators';
 
 export class Project {
     id: string;
@@ -58,6 +58,8 @@ export class ProjectService {
     return from(tags)
       .pipe(
         concatMap(id => tagService.getTag(id)),
+        filter(x => x !== undefined),
+        map(x => x as Tag),
         toArray()
       )
       .pipe(
@@ -89,7 +91,7 @@ export class ProjectService {
     return this.projects;
   }
 
-  getProject(id: string): Observable<Project> {
+  getProject(id: string): Observable<Project | undefined> {
     return this.projectLookup
       .pipe(map(ls => ls.get(id)));
   }

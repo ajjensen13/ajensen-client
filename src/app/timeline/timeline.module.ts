@@ -1,18 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TimelineComponent } from './timeline.component';
-import { ProjectComponent } from './project/project.component';
-import { ColorUtilitiesModule } from '../../color-utilities/color-utilities.module';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
   declarations: [
-    TimelineComponent,
-    ProjectComponent
+    TimelineComponent
   ],
   imports: [
     CommonModule,
-    ColorUtilitiesModule
+    RouterModule
   ],
   exports: [
     TimelineComponent

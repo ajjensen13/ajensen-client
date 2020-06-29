@@ -51,7 +51,7 @@ export class TagService {
     return this.tags;
   }
 
-  getTag(id: string): Observable<Tag> {
+  getTag(id: string): Observable<Tag | undefined> {
     return this.tagLookup
         .pipe(map(ls => ls.get(id)));
   }

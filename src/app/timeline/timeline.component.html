@@ -1,8 +1,3 @@
-<div role="list">
-  <app-timeline-project
-    *ngFor="let p of timeline | async"
-    role="listitem"
-    [project]="p"
-    (render)="onProjectRendered($event, p)"
-  ></app-timeline-project>
-</div>
+<ng-container *ngFor="let project of timeline | async">
+  <div [routerLink]="['/project', project.id]">{{ project.id }}</div>
+</ng-container>

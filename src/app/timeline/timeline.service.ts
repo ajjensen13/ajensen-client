@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Project, ProjectService } from './project.service';
+import { Project, ProjectService } from '../project/project.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Tag } from './tag.service';
+import { Tag } from '../tag/tag.service';
 
 export class TimelineProject {
   id: string;
@@ -61,16 +61,16 @@ export class TimelineService {
       if ( b.endDate ) {
         return b.endDate.valueOf() - a.endDate.valueOf();
       }
-      return b.endDate.valueOf(); // (`a` has ended & `b` hasn't) => sort `b` before `a`;
+      return a.endDate.valueOf(); // (`a` has ended & `b` hasn't) => sort `b` before `a`;
     }
     if ( b.endDate ) {
-      return -a.endDate.valueOf(); // (`b` has ended, `a` hasn't) => sort `b` before `a`;
+      return -b.endDate.valueOf(); // (`b` has ended, `a` hasn't) => sort `b` before `a`;
     }
     return 0;
 }
 
-  private static projectsWithParentFilter(parentId: string | typeof TimelineService.rootParentId): (Project) => boolean {
-    return (p: Project) => p.parent === parentId;
+  private static projectsWithParentFilter(parentId: string | typeof TimelineService.rootParentId): (p: TimelineProject) => boolean {
+    return (p: TimelineProject) => p ? p.parent?.id === parentId : false;
   }
 
   getTimeline(): Observable<TimelineProject[]> {

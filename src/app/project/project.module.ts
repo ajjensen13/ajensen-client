@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FadeColorPipe } from './fade-color.pipe';
+import { ProjectComponent } from './project.component';
 
 @NgModule({
   declarations: [
-    FadeColorPipe
+    ProjectComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    FadeColorPipe
+    ProjectComponent
   ]
 })
-export class ColorUtilitiesModule { }
+export class ProjectModule { }
