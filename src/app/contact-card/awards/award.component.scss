@@ -1,0 +1,13 @@
+@import '../../../theme';
+
+:host {
+  cursor: pointer;
+}
+
+p {
+  font-size: $font-size-sm;
+  color: $text-muted;
+  position: relative;
+  display: block;
+  overflow: hidden;
+}

@@ -5,7 +5,7 @@ $theme-colors: (
   "primary": #476040,
   "secondary": #d2dac3,
 );
-$link-color: map_get($theme-colors, "primary");
+$link-color: lighten(map_get($theme-colors, "primary"), 10%);
 
 $border-radius: 16px;
 

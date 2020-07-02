@@ -18,20 +18,10 @@
 }
 
 .list-group-item {
-  padding-left: 0;
-  padding-right: 0;
+  padding: 0;
+  border: none;
 
   &:first-of-type {
     padding-top: 0;
-  }
-
-  h5 {
-    font-size: $font-size-base;
-    font-weight: 500;
-  }
-
-  .card-text {
-    font-size: $font-size-sm;
-    color: $text-muted;
   }
 }

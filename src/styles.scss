@@ -1,2 +1,32 @@
 @import 'theme';
 @import '~node_modules/bootstrap/scss/reboot';
+
+:root body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+
+  ul, ol {
+    padding-left: 0;
+    list-style-position: inside;
+  }
+
+  h1 {
+    font-size: $font-size-base * 1.25;
+    font-weight: 600;
+  }
+
+  h2 {
+    font-size: $font-size-base * 1.25;
+    font-weight: 400;
+  }
+
+  h3 {
+    font-size: $font-size-base * 0.90;
+    font-weight: 500;
+  }
+
+  h4, h5, h6 {
+    font-size: $font-size-base * 1.0;
+    font-weight: 400;
+  }
+}

@@ -1,44 +1,35 @@
 <article class="card">
   <img class="card-img-top" src="assets/san_diego_cropped.jpg" alt="profile picture" />
   <div class="card-body">
-    <h3 class="card-title">Aaron Jensen</h3>
+    <h1 class="card-title">Aaron Jensen</h1>
     <p class="card-text">
       Full-stack software developer.
       Experienced in healthcare IT and financial services.
       Proficient with a variety of technologies.
     </p>
-    <h4>Awards & Achievements</h4>
+    <h2>Awards & Achievements</h2>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">
-        <h5>Overall Dedication to Product <small>— 2017</small></h5>
-        <p class="card-text">
+        <app-award [title]="'Overall Dedication to Product'" [year]="2017">
           In 2017, I was awarded the <i>Overall Dedication to Product</i> on the
           <a href="https://www.epic.com/software#Cosmos">Cosmos</a>
           team at <a href="https://www.epic.com/">Epic Systems</a>.
-        </p>
+        </app-award>
       </li>
       <li class="list-group-item">
-        <h5>Most Issues Fixed <small>— 2016</small></h5>
-        <p class="card-text">
+        <app-award [title]="'Most Issues Fixed'" [year]="2016">
           In 2016, I fixed the most outstanding issues on the
           <a href="https://www.epic.com/software#PopulationHealth">Healthy Planet</a>
           team at <a href="https://www.epic.com/">Epic Systems</a>.
-        </p>
+        </app-award>
       </li>
       <li class="list-group-item">
-        <h5>High Honors <small>— 2015</small></h5>
-        <p class="card-text">
+        <app-award [title]="'High Honors'" [year]="2015">
           In 2015, I graduated from <a href="https://www.uwlax.edu/">UW — La Crosse</a> with <i>High Honors</i>.
           I was on the <i>Dean's List</i> for all of my 8 semesters there.
-        </p>
+        </app-award>
       </li>
-<!--      <li class="list-group-item">-->
-<!--        <img src="https://projecteuler.net/profile/ajjensen13.png" alt="project euler badge">-->
-<!--      </li>-->
     </ul>
-    <p class="card-text">
-
-    </p>
   </div>
   <div class="card-footer text-muted">
     <a href="https://github.com/ajjensen13/" class="card-link">
