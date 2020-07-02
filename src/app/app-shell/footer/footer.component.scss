@@ -1,0 +1,14 @@
+@use '../../../styles';
+
+:host {
+  width: 100%;
+  height: 100%;
+  background-color: styles.$gray-100;
+}
+
+footer {
+  padding: styles.$spacer 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

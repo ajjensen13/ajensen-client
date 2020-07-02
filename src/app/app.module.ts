@@ -3,46 +3,25 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
-import { LayoutComponent } from './layout/layout.component';
-import { HeaderComponent } from './layout/header/header.component';
-import { FooterComponent } from './layout/footer/footer.component';
-import { TimelineComponent } from './timeline/timeline.component';
-import { RouterModule } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TimelineProjectComponent } from './timeline/timeline-project.component';
-import { TimelineListComponent } from './timeline/timeline-list.component';
+import { AppShellModule } from './app-shell/app-shell.module';
 import { HttpClientModule } from '@angular/common/http';
-import { TimelineRouteComponent } from './timeline/timeline-route.component';
-import { LightenColorPipePipe } from './timeline/lighten-color.pipe';
-import { FadeColorPipe } from './timeline/fade-color.pipe';
+import { TimelineModule } from './timeline/timeline.module';
+import { ProjectModule } from './project/project.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LayoutComponent,
-    HeaderComponent,
-    FooterComponent,
-    TimelineComponent,
-    TimelineProjectComponent,
-    TimelineListComponent,
-    TimelineRouteComponent,
-    LightenColorPipePipe,
-    FadeColorPipe
-  ],
-  imports: [
-    BrowserModule.withServerTransition({appId: 'serverApp'}),
-    AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-    RouterModule,
-    BrowserAnimationsModule,
-    HttpClientModule
-  ],
-  providers: [],
-  exports: [
-    LayoutComponent
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        AppShellModule,
+        HttpClientModule,
+        TimelineModule,
+        ProjectModule
+    ],
+    bootstrap: [
+        AppComponent
+    ]
 })
 export class AppModule { }

@@ -1,0 +1,35 @@
+@use '../../styles';
+
+.card {
+  box-shadow: styles.$box-shadow;
+}
+
+.card-link {
+  img {
+    width: 50px;
+  }
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.list-group-item {
+  padding-left: 0;
+  padding-right: 0;
+
+  &:first-of-type {
+    padding-top: 0;
+  }
+
+  h5 {
+    font-size: styles.$font-size-base;
+    font-weight: 500;
+  }
+
+  .card-text {
+    font-size: styles.$font-size-sm;
+    color: styles.$text-muted;
+  }
+}

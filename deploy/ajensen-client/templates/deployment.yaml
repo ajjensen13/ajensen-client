@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "ajensen-client.name" . }}-deploy
+  name: {{ include "app.name" . }}-deploy
   labels:
-  {{- include "ajensen-client.labels" . | nindent 4 }}
+  {{- include "app.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-  {{- include "ajensen-client.selectorLabels" . | nindent 6 }}
+  {{- include "app.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -16,7 +16,7 @@ spec:
       {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "ajensen-client.selectorLabels" . | nindent 8 }}
+        {{- include "app.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:

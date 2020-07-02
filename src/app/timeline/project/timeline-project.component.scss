@@ -1,0 +1,14 @@
+@use '../../../styles';
+
+:host {
+  position: relative;
+  height: min-content;
+}
+
+:host:not(:last-of-type) {
+  margin-bottom: map_get(styles.$spacers, 3);
+}
+
+div {
+  padding-left: map_get(styles.$spacers, 3);
+}

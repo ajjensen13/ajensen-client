@@ -1,8 +1,0 @@
-@use '../../../styles';
-
-header {
-  @extend %display-block;
-  @extend %size-parent;
-  background-color: styles.$color-foreground-default;
-  color: styles.$color-background-default;
-}

@@ -1,1 +1,27 @@
 @use '../../styles';
+
+.grid-container {
+  display: grid;
+  grid-template-columns: max-content max-content 1fr;
+  position: relative;
+}
+
+time {
+  text-align: right;
+  //padding-right: map_get(styles.$spacers, 3);
+  //padding-left: map_get(styles.$spacers, 3);
+}
+
+app-timeline-timestamp {
+  cursor: pointer;
+}
+
+app-timeline-route {
+  cursor: pointer;
+}
+
+app-timeline-project {
+  cursor: pointer;
+  //padding-right: map_get(styles.$spacers, 3);
+  //padding-left: map_get(styles.$spacers, 3);
+}

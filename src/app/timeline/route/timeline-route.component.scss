@@ -1,0 +1,7 @@
+@use '../../../styles';
+
+:host {
+  height: min-content;
+  position: relative;
+  padding: 0 map_get(styles.$spacers, 3);
+}

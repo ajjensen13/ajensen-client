@@ -1,11 +1,43 @@
-@forward 'scss/variables';
-@forward 'scss/helpers' with (
-  $shadow-x: 4px,
-  $shadow-y: 4px
+// Bootstrap (customizations)
+$primary: #ed8733;
+$secondary: #585858;
+$theme-colors: (
+  "primary": #476040,
+  "secondary": #d2dac3,
 );
-@forward 'scss/theme';
+$link-color: map_get($theme-colors, "primary");
 
-* {
-  box-sizing: border-box;
-  @extend %s-none;
+$border-radius: 16px;
+
+//$color-foreground-accent: #ed8733 !default;
+//$color-foreground-default: #476040 !default;
+//$color-foreground-muted: #585858 !default;
+//$color-semantic-primary-action: $color-foreground-accent !default;
+//$color-semantic-passive-action: $color-foreground-muted !default;
+//$color-font-default: #000000 !default;
+//$color-font-accent: $color-foreground-default !default;
+//$color-font-muted: $color-foreground-muted !default;
+//$color-content-background: #ffffff !default;
+//$color-background-default: #efeeea !default;
+//$color-background-accent: #d2dac3 !default;
+//$color-shadow: #65808080 !default;
+
+// Bootstrap (required)
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+
+// Bootstrap (optional)
+@import "node_modules/bootstrap/scss/reboot";
+@import "node_modules/bootstrap/scss/grid";
+@import "node_modules/bootstrap/scss/card";
+@import "node_modules/bootstrap/scss/list-group";
+@import "node_modules/bootstrap/scss/utilities/display";
+
+router-outlet {
+  display: none;
+}
+
+svg {
+  display: block;
 }
