@@ -7,6 +7,8 @@ import { AppShellModule } from './app-shell/app-shell.module';
 import { HttpClientModule } from '@angular/common/http';
 import { TimelineModule } from './timeline/timeline.module';
 import { ProjectModule } from './project/project.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
     declarations: [
@@ -18,7 +20,8 @@ import { ProjectModule } from './project/project.module';
         AppShellModule,
         HttpClientModule,
         TimelineModule,
-        ProjectModule
+        ProjectModule,
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
     ],
     bootstrap: [
         AppComponent
