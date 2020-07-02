@@ -1,3 +1,17 @@
-<ng-container *ngFor="let project of timeline | async">
-  <div [routerLink]="['/project', project.id]">{{ project.id }}</div>
-</ng-container>
+<div class="grid-container"
+     *ngIf="timelineProjects$ | async; let timelineProjects"
+     [@flyIn]="timelineProjects.length"
+     (@flyIn.done)="onFlyInDone()">
+  <ng-container *ngFor="let timelineProject of timelineProjects">
+    <app-timeline-timestamp
+      [routerLink]="['/project', timelineProject.id]"
+      [timelineProject]="timelineProject"></app-timeline-timestamp>
+    <app-timeline-route
+      [routerLink]="['/project', timelineProject.id]"
+      [draw]="drawRoutes$ | async"
+      [timelineProject]="timelineProject"></app-timeline-route>
+    <app-timeline-project
+      [routerLink]="['/project', timelineProject.id]"
+      [timelineProject]="timelineProject"></app-timeline-project>
+  </ng-container>
+</div>

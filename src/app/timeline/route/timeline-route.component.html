@@ -1,0 +1,12 @@
+<ng-container *ngIf="box$ | async; let box">
+  <svg xmlns="http://www.w3.org/2000/svg"
+       [attr.viewBox]="'12.5 0 25 ' + viewBoxHeight"
+       [attr.height]="viewBoxHeight"
+       [attr.width]="25">
+    <path [@drawn]="draw" *ngFor="let path of paths"
+          [attr.d]="path.d"
+          [attr.fill]="path.fill?.toString() || 'none'"
+          [attr.stroke]="path.stroke?.toString() || 'none'"
+          [attr.stroke-width]="path.strokeWidth || 1"/>
+  </svg>
+</ng-container>

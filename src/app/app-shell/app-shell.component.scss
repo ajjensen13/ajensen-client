@@ -4,44 +4,45 @@
   height: 100vh;
   width: 100vw;
 
-  $header-height: 50px;
+}
 
-  app-header {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: $header-height;
-  }
+$header-height: 50px;
+app-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: $header-height;
+  box-shadow: styles.$box-shadow;
+}
 
-  div {
-    margin: 0;
-    padding: 0;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: auto;
-    overflow-y: auto;
-    top: $header-height;
-    right: 0;
-    bottom: 0;
-    left: 0;
+.scroller {
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: auto;
+  overflow-y: auto;
+  top: $header-height;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
 
-    main {
-      padding: styles.$spacer;
-      margin: styles.$spacer;
-      flex: 1;
-      position: relative;
-      width: 100%;
-    }
+main {
+  padding: styles.$spacer;
+  margin: styles.$spacer;
+  flex: 1;
+  position: relative;
+  width: 100%;
+}
 
-    app-footer {
-      margin: 0;
-      padding: 0;
-      flex: none;
-      position: relative;
-      height: min-content;
-    }
-  }
+app-footer {
+  margin: 0;
+  padding: 0;
+  flex: none;
+  position: relative;
+  height: min-content;
 }

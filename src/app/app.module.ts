@@ -9,19 +9,19 @@ import { TimelineModule } from './timeline/timeline.module';
 import { ProjectModule } from './project/project.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    AppShellModule,
-    HttpClientModule,
-    TimelineModule,
-    ProjectModule
-  ],
-  bootstrap: [
-    AppComponent
-  ]
+    declarations: [
+        AppComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        AppShellModule,
+        HttpClientModule,
+        TimelineModule,
+        ProjectModule
+    ],
+    bootstrap: [
+        AppComponent
+    ]
 })
 export class AppModule { }

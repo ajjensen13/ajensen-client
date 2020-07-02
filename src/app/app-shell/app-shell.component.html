@@ -1,6 +1,15 @@
 <app-header></app-header>
-<div>
-  <main><ng-content></ng-content></main>
+<div class="scroller">
+  <main class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 col-xl-7">
+        <ng-content></ng-content>
+      </div>
+      <div class="col-12 col-md-6 col-xl-5 d-none d-md-block">
+        <app-contact-card></app-contact-card>
+      </div>
+    </div>
+  </main>
   <app-footer></app-footer>
 </div>
 

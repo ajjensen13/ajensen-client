@@ -1,0 +1,13 @@
+@use '../../../styles';
+
+:host {
+  height: min-content;
+}
+
+time {
+  font-size: styles.$font-size-base * 0.75;
+  color: styles.$text-muted;
+  display: block;
+  font-style: italic;
+  margin-top: 3px;
+}

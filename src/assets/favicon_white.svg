@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!--suppress HtmlDeprecatedAttribute -->
 <svg
   xmlns:dc="http://purl.org/dc/elements/1.1/"
   xmlns:cc="http://creativecommons.org/ns#"
@@ -16,7 +15,7 @@
   version="1.1"
   id="svg8"
   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-  sodipodi:docname="favicon.svg">
+  sodipodi:docname="favicon_white.svg">
   <title
      id="title839">AJ Site Icon</title>
   <defs
@@ -67,7 +66,7 @@
     <text
        transform="scale(0.88714496,1.1272115)"
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.2314px;line-height:1.25;font-family:sans-serif;fill:#ed8733;fill-opacity:1;stroke:none;stroke-width:0.255787;"
+       style="font-style:normal;font-weight:normal;font-size:10.2314px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.255787;"
        x="79.681557"
        y="57.026089"
        id="text835"><tspan
@@ -75,9 +74,9 @@
          id="tspan833"
          x="79.681557"
          y="57.026089"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Ink Free';-inkscape-font-specification:'Ink Free';fill:#ed8733;fill-opacity:1;stroke-width:0.255787;">AJ</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Ink Free';-inkscape-font-specification:'Ink Free';fill:#ffffff;fill-opacity:1;stroke-width:0.255787;">AJ</tspan></text>
     <path
-       style="fill:none;stroke:#ed8733;stroke-width:0.281976;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:none;stroke:#ffffff;stroke-width:0.281976;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 71.256251,65.621874 c 8.422249,-1.050655 10.681873,0 10.681873,0"
        id="path837" />
   </g>
