@@ -1,12 +1,13 @@
-@use '../../../styles';
+@import '../../../theme';
+@import "node_modules/bootstrap/scss/grid";
 
 header {
   display: flex;
   align-items: center;
   height: 100%;
   width: 100%;
-  background-color: map_get(styles.$theme-colors, "primary");
-  color: styles.$white;
+  background-color: map_get($theme-colors, "primary");
+  color: $white;
 }
 
 .header-aligner {

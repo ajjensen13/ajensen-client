@@ -1,7 +1,9 @@
-@use '../../styles';
+@import '../../theme';
+@import "node_modules/bootstrap/scss/card";
+@import "node_modules/bootstrap/scss/list-group";
 
 .card {
-  box-shadow: styles.$box-shadow;
+  box-shadow: $box-shadow;
 }
 
 .card-link {
@@ -24,12 +26,12 @@
   }
 
   h5 {
-    font-size: styles.$font-size-base;
+    font-size: $font-size-base;
     font-weight: 500;
   }
 
   .card-text {
-    font-size: styles.$font-size-sm;
-    color: styles.$text-muted;
+    font-size: $font-size-sm;
+    color: $text-muted;
   }
 }

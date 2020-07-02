@@ -5,3 +5,7 @@
   position: relative;
   padding: 0 map_get(styles.$spacers, 3);
 }
+
+svg {
+  display: block;
+}

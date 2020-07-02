@@ -1,4 +1,6 @@
-@use '../../styles';
+@import '../../theme';
+@import "node_modules/bootstrap/scss/grid";
+@import "node_modules/bootstrap/scss/utilities/display";
 
 :host {
   height: 100vh;
@@ -13,7 +15,7 @@ app-header {
   right: 0;
   left: 0;
   height: $header-height;
-  box-shadow: styles.$box-shadow;
+  box-shadow: $box-shadow;
 }
 
 .scroller {
@@ -32,8 +34,8 @@ app-header {
 }
 
 main {
-  padding: styles.$spacer;
-  margin: styles.$spacer;
+  padding: $spacer;
+  margin: $spacer;
   flex: 1;
   position: relative;
   width: 100%;
