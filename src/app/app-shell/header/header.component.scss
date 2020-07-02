@@ -17,4 +17,24 @@ header {
 .brand-icon {
   width: 32px;
   height: 32px;
+  background-size: contain;
+  background-image: url("src/assets/favicon_white-32x32.png");
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  .brand-icon {
+    background-image: url("src/assets/favicon_white-32x32_120dpi.png");
+  }
+
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    .brand-icon {
+      background-image: url("src/assets/favicon_white-32x32_144dpi.png");
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      .brand-icon {
+        background-image: url("src/assets/favicon_white-32x32_192dpi.png");
+      }
+    }
+  }
 }
