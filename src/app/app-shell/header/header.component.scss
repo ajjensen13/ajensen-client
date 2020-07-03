@@ -1,5 +1,7 @@
 @import '../../../theme';
-@import "node_modules/bootstrap/scss/grid";
+@import "~node_modules/bootstrap/scss/grid";
+@import "~node_modules/bootstrap/scss/utilities/display";
+@import "~node_modules/bootstrap/scss/utilities/flex";
 
 header {
   display: flex;
@@ -13,6 +15,7 @@ header {
 .header-aligner {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .brand-icon {
@@ -38,4 +41,12 @@ header {
       }
     }
   }
+}
+
+#profile-label {
+  font-size: 8px;
+}
+
+#profile-icon {
+  display: block;
 }

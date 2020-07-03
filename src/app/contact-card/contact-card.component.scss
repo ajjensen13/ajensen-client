@@ -1,6 +1,6 @@
 @import '../../theme';
-@import "node_modules/bootstrap/scss/card";
-@import "node_modules/bootstrap/scss/list-group";
+@import "~node_modules/bootstrap/scss/card";
+@import "~node_modules/bootstrap/scss/list-group";
 
 .card {
   box-shadow: $box-shadow;

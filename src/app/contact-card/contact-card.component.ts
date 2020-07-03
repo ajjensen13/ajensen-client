@@ -6,10 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contact-card.component.scss'],
 })
 export class ContactCardComponent implements OnInit {
-
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
-
 }

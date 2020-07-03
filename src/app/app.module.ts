@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppShellModule } from './app-shell/app-shell.module';
@@ -9,6 +8,7 @@ import { TimelineModule } from './timeline/timeline.module';
 import { ProjectModule } from './project/project.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ContactCardModule } from './contact-card/contact-card.module';
 
 @NgModule({
     declarations: [
@@ -16,12 +16,13 @@ import { environment } from '../environments/environment';
     ],
     imports: [
         BrowserModule,
+        HttpClientModule,
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
         AppRoutingModule,
         AppShellModule,
-        HttpClientModule,
         TimelineModule,
         ProjectModule,
-        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+        ContactCardModule
     ],
     bootstrap: [
         AppComponent
