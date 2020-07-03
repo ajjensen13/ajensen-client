@@ -14,5 +14,13 @@ footer {
 
   nav {
     @include make-container();
+
+    @each $size in map_keys($container-max-widths) {
+      @include media-breakpoint-up($size) {
+        & {
+          width: map_get($container-max-widths, $size);
+        }
+      }
+    }
   }
 }
