@@ -1,5 +1,4 @@
 @import '../../../theme';
-@import "~node_modules/bootstrap/scss/grid";
 
 :host {
   width: 100%;
@@ -12,4 +11,8 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  nav {
+    @include make-container();
+  }
 }

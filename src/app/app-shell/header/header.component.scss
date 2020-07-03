@@ -1,7 +1,4 @@
 @import '../../../theme';
-@import "~node_modules/bootstrap/scss/grid";
-@import "~node_modules/bootstrap/scss/utilities/display";
-@import "~node_modules/bootstrap/scss/utilities/flex";
 
 header {
   display: flex;
@@ -10,6 +7,29 @@ header {
   width: 100%;
   background-color: map_get($theme-colors, "primary");
   color: $white;
+}
+
+nav {
+  @include make-container();
+
+  > * {
+    @include make-row();
+
+    align-content: center;
+    justify-content: space-between;
+
+    > * {
+      @include make-col-ready();
+      @include make-col-auto();
+      cursor: pointer;
+
+      @include media-breakpoint-up(md) {
+        &.profile-icon-container {
+          display: none;
+        }
+      }
+    }
+  }
 }
 
 .header-aligner {
