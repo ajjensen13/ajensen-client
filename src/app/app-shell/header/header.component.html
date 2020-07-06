@@ -1,13 +1,13 @@
-<header>
-  <nav>
-    <div>
-      <div [routerLink]="['/']">
-        <div title="brand icon" class="brand-icon"></div>
-      </div>
-      <div class="profile-icon-container" [routerLink]="['/profile']">
-        <i id="profile-icon" class="material-icons" aria-describedby="profile-label">perm_identity</i>
-        <div id="profile-label">Profile</div>
-      </div>
+<header class="header-container">
+  <nav class="header-row">
+    <div [routerLink]="['/']" title="brand icon" class="brand-icon"></div>
+    <div *ngIf="showProfileIcon" class="icon-container" [routerLink]="['/profile']">
+      <i class="material-icons icon-image" aria-describedby="profile-icon-label">person_outline</i>
+      <div id="profile-icon-label" class="icon-label">Profile</div>
+    </div>
+    <div *ngIf="showTimelineIcon" class="icon-container" [routerLink]="['/timeline']">
+      <i class="material-icons icon-image" aria-describedby="timeline-icon-label">timeline</i>
+      <div id="timeline-icon-label" class="icon-label">Timeline</div>
     </div>
   </nav>
 </header>

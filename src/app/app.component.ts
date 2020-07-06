@@ -8,10 +8,11 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  hideSidebar: boolean;
+  hideSidebar = false;
+  showProfileIcon = true;
+  showTimelineIcon = true;
 
   constructor(private router: Router) {
-    this.hideSidebar = false;
   }
 
   private subscription: Subscription;

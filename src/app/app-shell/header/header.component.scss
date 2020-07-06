@@ -1,6 +1,6 @@
 @import '../../../theme';
 
-header {
+:host {
   display: flex;
   align-items: center;
   height: 100%;
@@ -9,7 +9,7 @@ header {
   color: $white;
 }
 
-nav {
+.header-container {
   @include make-container();
 
   @each $size in map_keys($container-max-widths) {
@@ -19,38 +19,43 @@ nav {
       }
     }
   }
+}
+
+.header-row {
+  @include make-row();
+
+  align-content: center;
+  justify-content: flex-start;
 
   > * {
-    @include make-row();
+    @include make-col-ready();
+    @include make-col-auto();
+    cursor: pointer;
 
-    align-content: center;
-    justify-content: space-between;
-
-    > * {
-      @include make-col-ready();
-      @include make-col-auto();
-      cursor: pointer;
-
-      @include media-breakpoint-up(md) {
-        &.profile-icon-container {
-          display: none;
-        }
+    @include media-breakpoint-up(md) {
+      &.icon-container {
+        display: none;
       }
     }
   }
-}
 
-.header-aligner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+  .brand-icon {
+    flex: 1 1;
+    width: 32px;
+    height: 32px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("src/assets/favicon_white-32x32.png");
+  }
 
-.brand-icon {
-  width: 32px;
-  height: 32px;
-  background-size: contain;
-  background-image: url("src/assets/favicon_white-32x32.png");
+  .icon-container {
+    flex: 0;
+    font-size: 8px;
+
+    * {
+      display: block;
+    }
+  }
 }
 
 @media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
@@ -69,12 +74,4 @@ nav {
       }
     }
   }
-}
-
-#profile-label {
-  font-size: 8px;
-}
-
-#profile-icon {
-  display: block;
 }

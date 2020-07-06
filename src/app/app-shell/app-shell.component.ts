@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-shell',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app-shell.component.scss']
 })
 export class AppShellComponent implements OnInit {
+  @Input() showProfileIcon: boolean;
+  @Input() showTimelineIcon: boolean;
+
   constructor() {
   }
 
